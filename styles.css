@@ -1,0 +1,838 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --border-color: #d1d5db;
+    --accent-color: #3b82f6;
+    --title-color: #1f2937;
+    --value-color: #2563eb;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --highlight-color: #ef4444;
+    --plus-highlight-color: #10b981;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+    --bg-color: #2a1e3b;
+    --text-color: #e1d5ff;
+    --border-color: #5a4b7a;
+    --accent-color: #ff80bf;
+    --title-color: #ff4d88;
+    --value-color: #ff99cc;
+    --card-bg: #3b2a5a;
+    --shadow-color: rgba(255, 255, 255, 0.2);
+    --highlight-color: #ff6f61;
+    --plus-highlight-color: #66cc99;
+}
+
+/* Theme-Specific Styles */
+
+/* Default Theme */
+body.theme-default {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --border-color: #d1d5db;
+    --accent-color: #3b82f6;
+    --title-color: #1f2937;
+    --value-color: #2563eb;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+/* Dark Mode Theme */
+body.theme-darkmode {
+    --bg-color: #1a1a1a; /* Darker background */
+    --text-color: #e0e0e0; /* Light text */
+    --border-color: #444444; /* Darker border */
+    --accent-color: #bb86fc; /* Purple accent */
+    --title-color: #ffffff; /* White titles */
+    --value-color: #03dac6; /* Cyan values */
+    --card-bg: #2c2c2c; /* Dark card background */
+    --shadow-color: rgba(255, 255, 255, 0.1); /* Light shadow */
+    --highlight-color: #cf6679; /* Pink highlight */
+    --plus-highlight-color: #03dac6; /* Cyan plus highlight */
+}
+
+body.theme-darkmode::before {
+    background-image: url('images/darkmode.jpg'); /* Add a dark mode background image */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    animation: darkmodeGlow 10s ease-in-out infinite;
+}
+/* Khmer Theme */
+body.theme-khmer {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #2c5282;
+    --value-color: #60a5fa;
+    --card-bg: #e6f0fab6;
+}
+
+body.theme-khmer::before {
+    background-image: url('images/khmer.jpg');
+    animation: khmerGlow 10s ease-in-out infinite;
+}
+
+/* Sunset Theme */
+body.theme-sunset {
+    --bg-color: #f0e6d6;
+    --text-color: #3a2e3f;
+    --border-color: #e8b5a1;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #ff8c00;
+    --card-bg: #fff5e6;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Rainy Theme */
+body.theme-rainy {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #2c5282;
+    --value-color: #60a5fa;
+    --card-bg: #e6f0fa;
+}
+
+/* Forest Theme */
+body.theme-forest {
+    --bg-color: #d4e4d2;
+    --text-color: #2d4a2e;
+    --border-color: #a8c7a7;
+    --accent-color: #4a8b4c;
+    --title-color: #355e3b;
+    --value-color: #6aa84f;
+    --card-bg: #e8f5e9;
+}
+
+/* Meteor Theme */
+body.theme-meteor {
+    --bg-color: #1e1e2f;
+    --text-color: #d1d5ff;
+    --border-color: #5a4b7a;
+    --accent-color: #7b68ee;
+    --title-color: #b0c4de;
+    --value-color: #9370db;
+    --card-bg: #2a2a4b;
+}
+
+/* Field Theme */
+body.theme-field {
+    --bg-color: #f0f4c3;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ffca28;
+    --title-color: #f57f17;
+    --value-color: #ffeb3b;
+    --card-bg: #f9fbe7;
+}
+
+/* Wanted Theme */
+body.theme-wanted {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fff5f7;
+}
+
+/* Dog Theme */
+body.theme-dog {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e0;
+    --accent-color: #050203;
+    --title-color: #d90606;
+    --value-color: #3f0a0a;
+    --card-bg: #c7e1f1;
+}
+
+/* Seasonal Themes */
+
+/* Winter Theme */
+body.theme-winter {
+    --bg-color: #e6f0fa;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #60a5fa;
+    --title-color: #2c5282;
+    --value-color: #4682b4;
+    --card-bg: #f0faff;
+}
+
+/* Halloween Theme */
+body.theme-halloween {
+    --bg-color: #2a1e3b;
+    --text-color: #f2f6f7;
+    --border-color: #ff7518;
+    --accent-color: #ff7518;
+    --title-color: #ff4500;
+    --value-color: #ecdac4;
+    --card-bg: #0707065e;
+}
+
+/* Spring Theme */
+body.theme-spring {
+    --bg-color: #f0e6d6;
+    --text-color: #3a2e3f;
+    --border-color: #e8b5a1;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #ff8c00;
+    --card-bg: #f3f1eda6;
+}
+
+/* Kawaii Theme */
+body.theme-kawaii {
+    --bg-color: #ffe6f0;
+    --text-color: #5a3b4a;
+    --border-color: #ff99cc;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fff0f5d5;
+}
+
+/* Pastel Theme */
+body.theme-pastel {
+    --bg-color: #f0e6f0;
+    --text-color: #5a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fefefe7f;
+}
+
+/* Hand-Drawn Theme */
+body.theme-handdrawn {
+    --bg-color: #f5f5dc;
+    --text-color: #4a3b5a;
+    --border-color: #151416;
+    --accent-color: #000000;
+    --title-color: #ff66b3;
+    --value-color: #0f0d0e;
+    --card-bg: #ffffffc3;
+}
+
+/* Rainbow Theme */
+body.theme-rainbow {
+    --bg-color: #e5e1cb;
+    --text-color: #ea1616;
+    --border-color: #d1d5db;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #645e56;
+    --card-bg: #cccabec4;
+}
+
+/* Glassmorphism Theme */
+body.theme-glassmorphism {
+    --bg-color: #e6f0fa;
+    --text-color: #1a3c5a;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --accent-color: #60a5fa;
+    --title-color: #2c5282;
+    --value-color: #196fb4;
+    --card-bg: rgba(201, 229, 243, 0.785);
+}
+
+/* Sticker Theme */
+body.theme-sticker {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #a3969d;
+    --accent-color: #000000;
+    --title-color: #e7dae0;
+    --value-color: #050405;
+    --card-bg: #fff5f7;
+}
+
+/* Cozy Theme */
+body.theme-cozy {
+    --bg-color: #f0e6d6;
+    --text-color: #3a2e3f;
+    --border-color: #e8b5a1;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #ff8c00;
+    --card-bg: #fff5e6;
+}
+
+/* Background Themes */
+body,
+html {
+    color: var(--text-color);
+    transition: background 0.5s ease, color 0.3s ease, filter 0.3s ease;
+    position: relative;
+    overflow: auto;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+    background-size: cover;
+    background-position: center;
+    transition: background 0.5s ease, opacity 0.5s ease;
+}
+
+/* Default Theme */
+body.theme-default::before {
+    background-image: none;
+}
+
+/* Khmer Theme */
+body.theme-khmer::before {
+    background-image: url('images/khmer.jpg');
+    animation: khmerGlow 10s ease-in-out infinite;
+}
+
+/* Sunset Theme */
+body.theme-sunset::before {
+    background-image: url('images/sunset.jpg');
+    animation: sunsetGlow 10s ease-in-out infinite;
+}
+
+/* Rainy Theme */
+body.theme-rainy::before {
+    background-image: url('images/rainy.jpg');
+}
+
+/* Forest Theme */
+body.theme-forest::before {
+    background-image: url('images/forest.jpg');
+}
+
+/* Meteor Theme */
+body.theme-meteor::before {
+    background-image: url('images/meteor.jpg');
+}
+
+/* Field Theme */
+body.theme-field::before {
+    background-image: url('images/field.jpg');
+}
+
+/* Wanted Theme */
+body.theme-wanted::before {
+    background-image: url('images/wanted.jpg');
+}
+
+/* Dog Theme */
+body.theme-dog::before {
+    background-image: url('images/dog.jpg');
+    background-size: 100%;
+    background-position: center;
+    animation: dogGlow 10s ease-in-out infinite;
+}
+
+/* Winter Theme */
+body.theme-winter::before {
+    background-image: url('images/winter.jpg');
+}
+
+/* Halloween Theme */
+body.theme-halloween::before {
+    background-image: url('images/halloween.jpg');
+}
+
+/* Spring Theme */
+body.theme-spring::before {
+    background-image: url('images/spring.jpg');
+}
+
+/* Kawaii Theme */
+body.theme-kawaii::before {
+    background-image: url('images/kawaii.jpg');
+}
+
+/* Pastel Theme */
+body.theme-pastel::before {
+    background-image: url('images/Pastel.jpg');
+    background-size: 100%;
+    animation: pastelGradient 15s ease infinite;
+}
+
+/* Hand-Drawn Theme */
+body.theme-handdrawn::before {
+    background-image: url('images/handdrawn.jpg');
+}
+
+/* Rainbow Theme */
+body.theme-rainbow::before {
+    background-image: url('images/doremon.jpg');
+    background-size: 100%;
+    animation: rainbowGradient 20s ease infinite;
+}
+
+/* Glassmorphism Theme */
+body.theme-glassmorphism::before {
+    background-image: url('images/Glassmorphism.jpg');
+    background-size: 100%;
+    animation: glassGradient 20s ease infinite;
+}
+
+/* Sticker Theme */
+body.theme-sticker::before {
+    background-image: url('images/sticker.jpg');
+}
+
+/* Cozy Theme */
+body.theme-cozy::before {
+    background-image: url('images/cozy.jpg');
+    animation: cozyGlow 10s ease-in-out infinite;
+}
+
+/* Animated Backgrounds */
+@keyframes khmerGlow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes sunsetGlow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes pastelGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes rainbowGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes glassGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes cozyGlow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Floating Elements for Specific Themes */
+body.theme-spring::after,
+body.theme-kawaii::after,
+body.theme-pastel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+body.theme-winter::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 10 70"><path d="M10 0v4m0 102v4M0 10h4m12 0h4M2.93 2.93l2.73 2.83m8.48 8.48l2.83 2.83M2.93 17.07l2.83-2.83m8.48-8.48l2.83-2.83" stroke="%23ffffff" stroke-width="1"/></svg>') repeat;
+    animation: snowfall 10s linear infinite;
+}
+
+body.theme-halloween::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+@keyframes snowfall {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100px; }
+}
+
+/* Theme Popup */
+#themePopup {
+    transition: opacity 0.3s ease;
+}
+
+#themePopup.show {
+    opacity: 1;
+}
+
+.theme-option {
+    padding: 8px;
+    border-radius: 8px;
+    background: var(--card-bg);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+/* Blur effect when theme popup is open */
+.blur {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+.blur-background::before {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #4a3b5a;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    display: none;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.history-card:hover .tooltip {
+    display: block;
+    
+}
+
+.highlight {
+    background-color: rgba(224, 13, 52, 0.1);
+    border-color: var(--highlight-color);
+}
+
+.plus-highlight {
+    background-color: rgba(102, 204, 153, 0.1);
+    border-color: var(--plus-highlight-color);
+}
+
+.last-highlight {
+        background-color: rgba(255, 215, 0, 0.2);
+        border-color: #ffd700;
+
+}
+
+/* Updated tabList Design */
+#tabList {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px 0;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem; /* Tailwind: px-4 py-2 */
+    margin: 0 0.25rem; /* Tailwind: mx-1 */
+    border-radius: 20px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.tab-btn:hover:not(.active) {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.tab-btn.active {
+    background: var(--accent-color);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px var(--shadow-color);
+}
+
+/* Kawaii UI Elements */
+body.theme-kawaii .tab-btn,
+body.theme-kawaii .theme-btn,
+body.theme-kawaii .zoom-btn,
+body.theme-kawaii .move-btn,
+body.theme-kawaii .btn-success,
+body.theme-kawaii .btn-danger {
+    border-radius: 50px;
+    padding: 1px 5px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: transform 0.2s ease;
+}
+
+body.theme-kawaii .tab-btn:hover,
+body.theme-kawaii .theme-btn:hover,
+body.theme-kawaii .zoom-btn:hover,
+body.theme-kawaii .move-btn:hover,
+body.theme-kawaii .btn-success:hover,
+body.theme-kawaii .btn-danger:hover {
+    transform: scale(1.1);
+}
+
+body.theme-kawaii input {
+    border-radius: 20px;
+    padding: 8px;
+    box-shadow: inset 0 1px 3px var(--shadow-color);
+}
+
+/* Sticker Mode */
+body.theme-sticker #container,
+body.theme-sticker .tab-btn,
+body.theme-sticker .theme-btn,
+body.theme-sticker .zoom-btn,
+body.theme-sticker .move-btn,
+body.theme-sticker .btn-success,
+body.theme-sticker .btn-danger {
+    transform: rotate(2deg);
+    box-shadow: 3px 3px 5px var(--shadow-color);
+    border: 2px solid var(--accent-color);
+}
+
+/* Glassmorphism Look */
+body.theme-glassmorphism #container {
+    border: 1px solid rgba(255, 255, 255, 0.977);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Container and Wrapper */
+#containerWrapper {
+    position: absolute;
+    z-index: 1;
+}
+
+#container {
+    background: var(--card-bg) !important;
+    position: relative;
+    transition: transform 0.1s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* Visual Indicators */
+#container.dragging {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+#container.resizing {
+    border: 2px dashed var(--accent-color);
+}
+
+/* Move Button */
+.move-btn {
+    transition: all 0.2s ease;
+}
+
+/* Resize Handle */
+#resizeHandle {
+    width: 16px;
+    height: 16px;
+    background: var(--accent-color);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+    border-radius: 0 0 8px 0;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-3px); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px var(--accent-color); }
+    50% { text-shadow: 0 0 10px var(--accent-color), 0 0 15px var(--accent-color); }
+    100% { text-shadow: 0 0 5px var(--accent-color); }
+}
+
+.slide-in {
+    animation: slideIn 0.4s ease-out;
+}
+
+.pulse {
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.bounce {
+    animation: bounce 0.5s ease;
+}
+
+.spin:hover {
+    animation: spin 0.5s linear 1;
+}
+
+.glow:hover {
+    animation: glow 1s ease-in-out 1;
+}
+
+.theme-btn,
+.zoom-btn,
+.move-btn {
+    transition: all 0.2s ease;
+}
+
+.add-icon,
+.delete-icon {
+    display: inline-block;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    animation: bounce 0.5s ease;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    animation: bounce 0.5s ease;
+}
+
+.history-card {
+    padding: 4px 8px;
+    margin: 2px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.history-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px var(--shadow-color);
+}
+
+input {
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 3px rgba(255, 153, 204, 0.1);
+}
+
+#currentBalanceDisplay:focus {
+    background-color: var(--card-bg);
+    border-color: var(--accent-color);
+    border-radius: 4px;
+    outline: none;
+}
+
+#amountInput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    text-align: center;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-size: 13px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #100707;
+    margin-top: 10px;
+    gap: 1px;
+    animation: fadeIn 0.6s ease-in;
+    padding-bottom: 10px;
+}
+
+.emoji {
+    margin-left: 5px;
+    color: #030101;
+}
+.theme-option.selected {
+    background: var(--accent-color); /* Use the accent color for the background */
+    color: white; /* Ensure text is readable */
+    box-shadow: 0 2px 6px var(--shadow-color); /* Add a shadow for emphasis */
+    transform: scale(1.05); /* Slightly enlarge the selected theme */
+}
+
+.theme-option.selected p {
+    color: rgba(255, 255, 255, 0.982); /* Ensure the theme name text is white for readability */
+}
+
+/* Header with Move Button */
+.flex.justify-between.items-center.mb-3.p-4 {
+    margin-bottom: -1rem; /* Adjust this value to reduce space */
+}
+/* Tab Navigation */
+.flex.justify-between.items-center.mb-4.px-4 {
+    margin-top: 0.5rem; /* Adjust this value to reduce space */
+}
