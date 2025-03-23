@@ -836,3 +836,7 @@ input:focus {
 .flex.justify-between.items-center.mb-4.px-4 {
     margin-top: 0.5rem; /* Adjust this value to reduce space */
 }
+#container.dragging {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    cursor: grabbing;
+}

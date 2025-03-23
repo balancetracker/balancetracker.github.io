@@ -255,7 +255,7 @@ function highlightLastHistoryEntry() {
         const secondMostRecentAmount = secondMostRecentAmountMatch ? parseFloat(secondMostRecentAmountMatch[1].replace(/,/g, '')) : null;
 
         // Check if the amounts match
-        if (mostRecentAmount !== null && secondMostRecentAmount !== null && mostRecentAmount === secondMostRecentAmount) {
+        if (mostRecentAmount !== null && mostRecentAmount === secondMostRecentAmount) {
             amountsMatch = true;
             // Apply .highlight to the second-most-recent card as well
             secondMostRecentCard.classList.add('highlight');
@@ -433,15 +433,30 @@ function saveProfiles() {
 
 // Zoom functionality
 zoomIn.addEventListener('click', () => {
-    scale = Math.min(scale + 0.1, 1.5);
+    const oldScale = scale;
+    const maxScale = Math.min(
+        1.5,
+        Math.min(
+            window.innerWidth / container.offsetWidth,
+            window.innerHeight / container.offsetHeight
+        )
+    );
+    scale = Math.min(scale + 0.1, maxScale);
     container.style.transform = `scale(${scale})`;
+
+    adjustPositionAfterZoom(oldScale, scale);
+
     containerState.scale = scale;
     localStorage.setItem('containerState', JSON.stringify(containerState));
 });
 
 zoomOut.addEventListener('click', () => {
+    const oldScale = scale;
     scale = Math.max(scale - 0.1, 0.5);
     container.style.transform = `scale(${scale})`;
+
+    adjustPositionAfterZoom(oldScale, scale);
+
     containerState.scale = scale;
     localStorage.setItem('containerState', JSON.stringify(containerState));
 });
@@ -466,6 +481,7 @@ document.addEventListener('mousemove', (e) => {
     if (isDragging) {
         let newX = e.clientX - currentX;
         let newY = e.clientY - currentY;
+        
 
         // Ensure the calculator stays within the viewport
         const maxX = window.innerWidth - container.offsetWidth * scale;
@@ -503,6 +519,17 @@ document.addEventListener('mouseup', () => {
 if (resetSizePosition) {
     resetSizePosition.remove();
 }
+
+// Center the calculator on page reload
+window.addEventListener('load', () => {
+    containerWrapper.style.left = '50%';
+    containerWrapper.style.top = '50%';
+    containerWrapper.style.transform = 'translate(-50%, -50%)';
+    containerState.left = '50%';
+    containerState.top = '50%';
+    containerState.transform = 'translate(-50%, -50%)';
+    localStorage.setItem('containerState', JSON.stringify(containerState));
+});
 
 // Theme toggle functionality with blur effect
 themeToggle.addEventListener('click', () => {
