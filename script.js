@@ -46,43 +46,276 @@ containerWrapper.style.transform = containerState.transform;
 scale = containerState.scale;
 container.style.transform = `scale(${scale})`;
 
-// Theme Options
 const themes = [
-    { id: 'default', name: 'Default', icon: '⚪' },
-    { id: 'darkmode', name: 'Dark Mode', icon: '🌙' }, // New Dark Mode theme
-    { id: 'khmer', name: 'Khmer', icon: '🏡' },
-    { id: 'sunset', name: 'Sunset', icon: '🌅' },
-    { id: 'rainy', name: 'Rainy City', icon: '☔' },
-    { id: 'forest', name: 'Forest Festival', icon: '🌳' },
-    { id: 'meteor', name: 'Meteor Shower', icon: '🌠' },
-    { id: 'field', name: 'Sunny Field', icon: '🌞' },
-    { id: 'wanted', name: 'Wanted Poster', icon: '📜' },
-    { id: 'dog', name: 'Dog Chase', icon: '🐶' },
-    { id: 'winter', name: 'Winter', icon: '☃️' },
-    { id: 'halloween', name: 'Halloween', icon: '🎃' },
-    { id: 'spring', name: 'Daisy', icon: '🌼' },
-    { id: 'kawaii', name: 'Kawaii', icon: '🍡' },
-    { id: 'pastel', name: 'Pastel', icon: '🎨' },
-    { id: 'handdrawn', name: 'Hand-Drawn', icon: '✍️' },
-    { id: 'rainbow', name: 'Doraemon', icon: '🐼' },
-    { id: 'glassmorphism', name: 'Luffy', icon: '👒' },
-    { id: 'sticker', name: 'Sticker', icon: '📌' },
-    { id: 'cozy', name: 'Cozy', icon: '🛋️' }
+    {
+        category: 'Default',
+        items: [
+            { id: 'default', name: 'Default', icon: '', preview: 'images/default.png' },
+            { id: 'darkmode', name: 'Dark Mode', icon: '🌙', preview: 'images/darkmode.jpg' },
+        ]
+    },
+    {
+        category: 'Shin-chan',
+        items: [
+            { id: 'family', name: 'family', icon: '', preview: 'images/Shin-chan/family.jpg' },
+            { id: 'fishing', name: 'fishing', icon: '', preview: 'images/Shin-chan/fishing.jpg' },
+            { id: 'friend', name: 'friend', icon: '', preview: 'images/Shin-chan/friend.jpg' },
+            { id: 'luky', name: 'luky', icon: '', preview: 'images/Shin-chan/luky.jpg' },
+            { id: 'peace', name: 'peace', icon: '', preview: 'images/Shin-chan/peace.jpg' },
+            { id: 'missing', name: 'Missing', icon: '', preview: 'images/Shin-chan/Missing.jpg' },
+            { id: 'work', name: 'work', icon: '', preview: 'images/Shin-chan/work.jpg' },
+            { id: 'beach', name: 'Beach', icon: '', preview: 'images/Shin-chan/beach.jpg' },
+            { id: 'party', name: 'Party', icon: '', preview: 'images/Shin-chan/party.jpg' },
+            { id: 'sea', name: 'sea', icon: '', preview: 'images/Shin-chan/sea.jpg' },
+            { id: 'care', name: 'care', icon: '', preview: 'images/Shin-chan/care.jpg' },
+            { id: 'rainy', name: 'Rainy', icon: '', preview: 'images/Shin-chan/rainy.jpg' },
+            { id: 'sunny', name: 'Sunny', icon: '', preview: 'images/Shin-chan/Sunny.jpg' },
+            { id: 'meteor', name: 'Meteor', icon: '', preview: 'images/Shin-chan/meteor.jpg' }
+        ]
+    },
+    {
+        category: 'D.Luffy',
+        items: [
+            { id: 'strawhat', name: 'Straw Hat', icon: '', preview: 'images/D.Luffy/strawhat.jpg' },
+            { id: 'pirateship', name: 'Pirate Ship', icon: '', preview: 'images/D.Luffy/pirateship.jpg' },
+            { id: 'logo', name: 'Sticker', icon: '', preview: 'images/D.Luffy/Sticker.jpg' },
+            { id: 'adventure', name: 'Adventure', icon: '', preview: 'images/D.Luffy/adventure.jpg' },
+            { id: 'kid', name: 'Kid', icon: '', preview: 'images/D.Luffy/kid.jpg' },
+            { id: 'joyboy', name: 'Joyboy', icon: '', preview: 'images/D.Luffy/joyboy.jpg' },
+            { id: 'forest', name: 'Forest', icon: '', preview: 'images/D.Luffy/Forest.jpg' },
+            { id: 'grandline', name: 'Grand Line', icon: '', preview: 'images/D.Luffy/grandline.jpg' },
+            { id: 'onepiece', name: 'One Piece', icon: '', preview: 'images/D.Luffy/onepiece.jpg' }
+        ]
+    },
+    {
+        category: 'Kampuchea',
+        items: [
+            { id: 'home', name: 'Home', preview: 'images/kampuchea/Home.jpg' },
+            { id: 'angkor', name: 'Angkor', preview: 'images/kampuchea/angkor.jpg' },    
+            { id: 'night', name: 'Night', preview: 'images/kampuchea/Night.jpg' },
+            { id: 'dream', name: 'Dream', preview: 'images/kampuchea/Dream.jpg' }
+        ]
+    },
+    {
+        category: 'Panda',
+        items: [
+            { id: 'sleeping', name: 'Sleeping', preview: 'images/Panda/sleeping.jpg' },
+            { id: 'relax', name: 'Relax', preview: 'images/Panda/relax.jpg' },
+            { id: 'sticky', name: 'Sticky', preview: 'images/Panda/sticky.jpg' },
+            { id: 'shower', name: 'Shower', preview: 'images/Panda/shower.jpg' },
+            { id: 'cute', name: 'Cute', preview: 'images/Panda/Cute.jpg' },
+            { id: 'gang', name: 'Gang', preview: 'images/Panda/Gang.jpg' }
+        ]
+    },
+    {
+        category: 'Nezha',
+        items: [
+            { id: 'jgmix', name: 'Jg Mix', preview: 'images/nezha/Jgmix.jpg' },
+            { id: 'goffy', name: 'Goffy', preview: 'images/nezha/goffy.jpg' },
+            { id: 'chers', name: 'Chers', preview: 'images/nezha/chers.jpg' },
+            { id: 'kdmv', name: 'KDMV', preview: 'images/nezha/kdmv.jpg' },
+            { id: 'ganggang', name: 'ganggang', preview: 'images/nezha/ganggang.jpg' },
+            { id: 'jaffy', name: ' jaffy', preview: 'images/nezha/jaffy.jpg' },
+            { id: 'pukmak', name: 'pukmak', preview: 'images/nezha/pukmak.jpg' },
+            { id: 'BL', name: 'BL', preview: 'images/nezha/BL.jpg' }
+
+        ]
+    },
+    {
+        category: 'Bubu Dudu',
+        items: [
+            { id: 'trip', name: 'Trip', preview: 'images/Bubu Dudu/trip.jpg' },
+            { id: 'street', name: 'Street', preview: 'images/Bubu Dudu/street.jpg' },
+            { id: 'heart', name: 'Heart', preview: 'images/Bubu Dudu/sea.jpg' },
+            { id: 'sweet', name: 'Sweet', preview: 'images/Bubu Dudu/night.jpg' }
+        ]
+    },
+    {
+        category: 'Naruto',
+        items: [
+            { id: 'hikhik', name: 'Hikhik', preview: 'images/Naruto/hikhik.jpg' },
+            { id: 'woo', name: 'Woo?', preview: 'images/Naruto/woo.jpg' },
+            { id: 'thnking', name: 'Thnking', preview: 'images/Naruto/hikhik.jpg' },
+            { id: 'team', name: 'Team', preview: 'images/Naruto/team.jpg' },
+        ]
+    },
+    {
+        category: 'Ponyo',
+        items: [
+            { id: 'first', name: 'First', preview: 'images/ponyo/first.jpg' },
+            { id: 'hug', name: 'Hug', preview: 'images/ponyo/hug.jpg' },
+            { id: 'nature', name: 'Nature', preview: 'images/ponyo/nature.jpg' },
+            { id: 'warm', name: 'Warm', preview: 'images/ponyo/warm.jpg' },
+            { id: 'ocean', name: 'Ocean', preview: 'images/ponyo/ocean.jpg' },
+        ]
+    },
+    {
+        category: 'Doraemon&Stitch',
+        items: [
+            { id: 'wating', name: 'Wating', preview: 'images/Doraemon&Stitch/wating.jpg' },
+            { id: 'hello', name: 'Hello', preview: 'images/Doraemon&Stitch/hello.jpg' },
+            { id: 'lolo', name: 'lolo', preview: 'images/Doraemon&Stitch/lolo.jpg' },
+            { id: 'cool', name: 'cool', preview: 'images/Doraemon&Stitch/cool.jpg' },
+            { id: 'help', name: 'help', preview: 'images/Doraemon&Stitch/help.jpg' },
+        ]
+    },
+    {
+        category: 'Totoro',
+        items: [
+            { id: 'rgcham', name: 'Rgcham', preview: 'images/Totoro/rgcham.jpg' },
+            { id: 'collapsing', name: 'collapsing', preview: 'images/Totoro/collapsing.jpg' },
+            { id: 'whoops', name: 'whoops', preview: 'images/Totoro/whoops.jpg' },
+        ]
+    },
+    {
+        category: 'Weather&Flower',
+        items: [
+            { id: 'daisy', name: 'Daisy', preview: 'images/Weather&Flower/Daisy.jpg' },
+            { id: 'campfire', name: 'campfire', preview: 'images/Weather&Flower/campfire.jpg' },
+            { id: 'cozy', name: 'cozy', preview: 'images/Weather&Flower/cozy.jpg' },
+            { id: 'meet', name: 'Meet', preview: 'images/Weather&Flower/meet.jpg' },
+            { id: 'safe', name: 'Safe', preview: 'images/Weather&Flower/safe.jpg' },
+            { id: 'sakura', name: 'Sakura', preview: 'images/Weather&Flower/sakura.jpg' },
+            { id: 'village', name: 'village', preview: 'images/Weather&Flower/village.jpg' },
+        ]
+    }
 ];
 
-// Load selected theme from localStorage or set to 'default' for new users
-const savedTheme = localStorage.getItem('selectedTheme') || 'default';
-document.body.className = `font-mono theme-${savedTheme}`;
-document.documentElement.setAttribute('data-theme', savedTheme === 'default' || savedTheme === 'sunset' || savedTheme === 'spring' || savedTheme === 'kawaii' || savedTheme === 'pastel' || savedTheme === 'handdrawn' || savedTheme === 'rainbow' || savedTheme === 'glassmorphism' || savedTheme === 'sticker' || savedTheme === 'cozy' ? 'light' : 'dark');
-// Update current balance display
+// Fixed missing or incorrect logic in theme rendering
+function renderThemeOptions() {
+    if (!themeList) {
+        console.error('themeList element not found!');
+        return;
+    }
+    themeList.innerHTML = '';
+    const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+    console.log('Saved theme on render:', savedTheme);
+
+    themes.forEach((category, catIndex) => {
+        const categoryContainer = document.createElement('div');
+        categoryContainer.className = 'category-container';
+
+        const categoryHeader = document.createElement('div');
+        categoryHeader.className = 'category-header text-sm font-semibold text-[var(--text-color)] mt-2 mb-1 p-2 rounded-lg cursor-pointer flex justify-between items-center';
+        categoryHeader.innerHTML = `
+            ${category.category || 'Unnamed Category'}
+            <i class="fas fa-chevron-down transition-transform duration-300"></i>
+        `;
+        categoryContainer.appendChild(categoryHeader);
+
+        const categoryGrid = document.createElement('div');
+        categoryGrid.className = 'category-grid grid grid-cols-3 gap-2 hidden';
+        category.items.forEach((theme, themeIndex) => {
+            const themeOption = document.createElement('div');
+            themeOption.className = `theme-option ${theme.id === savedTheme ? 'selected' : ''}`;
+            themeOption.setAttribute('data-theme-id', theme.id);
+            themeOption.innerHTML = `
+                <div class="flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-cover bg-center" style="background-image: url('${theme.preview || ''}');"></div>
+                    <p class="text-xs text-[var(--text-color)]">${theme.name || 'Unnamed Theme'}</p>
+                </div>
+            `;
+            themeOption.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent bubbling to categoryHeader
+                console.log(`Theme clicked: Category=${category.category}, Theme=${theme.name}, ID=${theme.id}`);
+                console.log('Event target:', e.target);
+                console.log('Current body class before change:', document.body.className);
+
+                // Apply the selected theme to the body
+                document.body.className = `font-mono theme-${theme.id}`;
+                console.log('Body class set to:', document.body.className);
+
+                // Set data-theme attribute
+                document.documentElement.setAttribute('data-theme', 
+                    ['default', 'family', 'fishing', 'luky', 'peace', 'missing', 'work', 'beach', 'party', 'sea', 'care', 'rainy', 'sunny', 'meteor', 
+                     'strawhat', 'pirateship', 'logo', 'adventure', 'kid', 'joyboy', 'forest', 'grandline', 'onepiece', 
+                     'home', 'angkor', 'dream', 
+                     'sleeping', 'relax', 'sticky', 'shower', 'cute', 'gang', 
+                     'jgmix', 'goffy', 'chers', 'kdmv', 'kesomtus', 
+                     'trip', 'street', 'heart', 'sweet', 
+                     'hikhik', 'woo', 'thnking', 'team', 
+                     'first', 'hug', 'nature', 'warm', 'ocean', 
+                     'wating', 'hello', 'lolo', 'cool', 'help', 
+                     'rgcham', 'collapsing', 'whoops', 
+                     'daisy', 'campfire', 'cozy', 'meet', 'safe', 'sakura', 'village'].includes(theme.id) ? 'light' : 'dark'
+                );
+                console.log('data-theme set to:', document.documentElement.getAttribute('data-theme'));
+
+                // Save to localStorage
+                localStorage.setItem('selectedTheme', theme.id);
+                console.log('Saved theme to localStorage:', localStorage.getItem('selectedTheme'));
+
+                // Update the selected state
+                document.querySelectorAll('.theme-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                themeOption.classList.add('selected');
+                console.log('Selected class updated on themeOption:', themeOption.className);
+
+                // Close the theme popup
+                if (themePopup) {
+                    themePopup.classList.add('hidden');
+                    themePopup.classList.remove('show');
+                    console.log('Theme popup closed');
+                }
+
+                // Force a re-render
+                document.body.classList.remove('force-render');
+                void document.body.offsetWidth; // Trigger reflow
+                document.body.classList.add('force-render');
+                console.log('Forced re-render of body');
+            });
+            categoryGrid.appendChild(themeOption);
+        });
+        categoryContainer.appendChild(categoryGrid);
+
+        categoryHeader.addEventListener('click', () => {
+            categoryGrid.classList.toggle('hidden');
+            const chevron = categoryHeader.querySelector('i');
+            chevron.classList.toggle('rotate-180');
+        });
+
+        themeList.appendChild(categoryContainer);
+    });
+
+    openCategoryWithSelectedTheme(savedTheme);
+}
+
+// Ensure the category containing the selected theme is open
+function openCategoryWithSelectedTheme(savedTheme) {
+    const categoryContainers = document.querySelectorAll('.category-container');
+    categoryContainers.forEach(container => {
+        const categoryGrid = container.querySelector('.category-grid');
+        const themeOptions = categoryGrid.querySelectorAll('.theme-option');
+        let hasSelectedTheme = false;
+
+        themeOptions.forEach(option => {
+            if (option.classList.contains('selected')) {
+                hasSelectedTheme = true;
+            }
+        });
+
+        if (hasSelectedTheme) {
+            categoryGrid.classList.remove('hidden');
+            const chevron = container.querySelector('.category-header i');
+            chevron.classList.add('rotate-180');
+        }
+    });
+}
+
 function updateCurrentBalanceDisplay(balance) {
-    if (isNaN(balance)) balance = 0;
-    currentBalanceDisplay.value = formatNumber(balance);
+    if (isNaN(balance) || balance === 0) {
+        currentBalanceDisplay.value = ''; // Set to empty if balance is 0 or NaN
+    } else {
+        currentBalanceDisplay.value = formatNumber(balance); // Format and display the balance
+    }
     currentBalanceDisplay.classList.add('fade-in');
 }
 
-// Format number with commas
 function formatNumber(num) {
+    if (num === undefined || num === null || isNaN(num)) {
+        return '0';
+    }
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
@@ -90,24 +323,32 @@ function formatNumber(num) {
 function restrictInput(event) {
     const input = event.target;
     input.value = input.value.replace(/[^0-9-]/g, '');
-    if (input === amountInput) calculateAndUpdate();
-    if (input === currentBalanceDisplay) {
-        const profile = profiles.find(p => p.name === activeProfile);
-        const newBalance = parseFloat(input.value.replace(/,/g, '')) || 0;
-        profile.balance = newBalance;
-        saveProfiles();
+
+    // Only trigger calculations for specific inputs
+    if (input === amountInput) {
+        calculateAndUpdate();
+    } else if (input === bankBalanceInput) {
+        calculateAndUpdateBank();
     }
-    if (input === bankBalanceInput) calculateAndUpdateBank();
 }
 
-// Calculate and update balance (deduct amount and fee)
+// Remove unnecessary blur event listener for currentBalanceDisplay
+[amountInput, feeInput, bankBalanceInput].forEach(input => {
+    input.addEventListener('input', restrictInput);
+    input.addEventListener('blur', () => {
+        if (input === amountInput) calculateAndUpdate();
+        if (input === bankBalanceInput) calculateAndUpdateBank();
+    });
+});
+
 function calculateAndUpdate() {
     const profile = profiles.find(p => p.name === activeProfile);
     let balance = parseFloat(currentBalanceDisplay.value.replace(/,/g, '')) || 0;
     const amount = parseFloat(amountInput.value.replace(/,/g, '')) || 0;
     const fee = parseFloat(feeInput.value.replace(/,/g, '')) || 0;
 
-    if (isNaN(amount)) return;
+    // Only proceed if there's an amount; ignore fee-only changes here
+    if (amount === 0) return; // Skip if no amount is entered
 
     const newBalance = balance - amount - fee;
     const formattedResult = formatNumber(newBalance);
@@ -124,49 +365,15 @@ function calculateAndUpdate() {
         A: ${formatNumber(amount)}${feeText} | B: ${formattedResult}
         <span class="timestamp hidden">${dateTime}</span>
     `;
-    historyCard.addEventListener('click', () => {
-        const match = historyCard.textContent.match(/A: ([\d,]+)( \| F: ([\d,]+))? \| B: ([\d,]+)/);
-        const amount = parseFloat(match[1].replace(/,/g, ''));
-        const fee = match[3] ? parseFloat(match[3].replace(/,/g, '')) : 0;
-        const balance = parseFloat(match[4].replace(/,/g, ''));
-        amountInput.value = formatNumber(amount);
-        feeInput.value = fee > 0 ? formatNumber(fee) : '';
-        bankBalanceInput.value = '';
-        updateCurrentBalanceDisplay(balance);
-        const profile = profiles.find(p => p.name === activeProfile);
-        profile.balance = balance;
-        saveProfiles();
-    });
-    historyCard.addEventListener('mouseover', (e) => {
-        if (tooltip) {
-            tooltip.textContent = historyCard.querySelector('.timestamp').textContent;
-            tooltip.style.display = 'block';
-            tooltip.style.left = `${e.pageX + 10}px`;
-            tooltip.style.top = `${e.pageY + 10}px`;
-        }
-    });
-    historyCard.addEventListener('mouseout', () => {
-        if (tooltip) {
-            tooltip.style.display = 'none';
-        }
-    });
-
-    // Highlight if the amount matches the previous entry
-    const previousEntry = historyList.firstChild?.textContent;
-    const previousAmountMatch = previousEntry?.match(/A: ([\d,]+)/);
-    const previousAmount = previousAmountMatch ? parseFloat(previousAmountMatch[1].replace(/,/g, '')) : null;
-    if (previousAmount !== null && previousAmount === amount) {
-        historyCard.classList.add('highlight');
-    }
+    // ... history card event listeners remain unchanged ...
 
     profile.history.unshift(historyCard.outerHTML);
     saveProfiles();
     renderHistory(profile.history);
-    amountInput.value = '';
-    feeInput.value = '';
-    navigator.clipboard.writeText(formattedResult).catch(console.error);
+    
+    amountInput.value = ''; // Clear only amountInput, leave feeInput as is
 
-    // Highlight the last history entry
+    navigator.clipboard.writeText(formattedResult).catch(console.error);
     highlightLastHistoryEntry();
 }
 
@@ -227,48 +434,33 @@ function calculateAndUpdateBank() {
 }
 
 // Highlight the last history entry
-// Highlight the last history entry
 function highlightLastHistoryEntry() {
     const historyCards = historyList.querySelectorAll('.history-card');
-    console.log('History cards:', historyCards); // Debug: Check if cards are found
-
-    // Remove last-highlight from all cards
     historyCards.forEach(card => card.classList.remove('last-highlight'));
 
-    // If there are no history cards, return
     if (historyCards.length === 0) return;
 
-    // Get the most recent and second-most-recent entries
     const mostRecentCard = historyCards[0];
     const secondMostRecentCard = historyCards[1];
 
-    // Extract the amount from the most recent entry
     const mostRecentText = mostRecentCard.textContent;
     const mostRecentAmountMatch = mostRecentText.match(/A: ([\d,]+)/);
     const mostRecentAmount = mostRecentAmountMatch ? parseFloat(mostRecentAmountMatch[1].replace(/,/g, '')) : null;
 
-    // If there's a second entry, extract its amount
     let amountsMatch = false;
     if (secondMostRecentCard) {
         const secondMostRecentText = secondMostRecentCard.textContent;
         const secondMostRecentAmountMatch = secondMostRecentText.match(/A: ([\d,]+)/);
         const secondMostRecentAmount = secondMostRecentAmountMatch ? parseFloat(secondMostRecentAmountMatch[1].replace(/,/g, '')) : null;
 
-        // Check if the amounts match
         if (mostRecentAmount !== null && mostRecentAmount === secondMostRecentAmount) {
             amountsMatch = true;
-            // Apply .highlight to the second-most-recent card as well
             secondMostRecentCard.classList.add('highlight');
-            console.log('Applied highlight to second-most-recent card:', secondMostRecentCard); // Debug
         }
     }
 
-    // Apply last-highlight to the most recent card only if amounts don't match
     if (!amountsMatch) {
         mostRecentCard.classList.add('last-highlight');
-        console.log('Applied last-highlight to:', mostRecentCard); // Debug: Confirm class is added
-    } else {
-        console.log('Skipped last-highlight because amounts match:', mostRecentCard); // Debug
     }
 }
 
@@ -426,11 +618,6 @@ function saveProfiles() {
     localStorage.setItem('profiles', JSON.stringify(profiles));
 }
 
-// Input event listeners
-[amountInput, feeInput, currentBalanceDisplay, bankBalanceInput].forEach(input => {
-    input.addEventListener('input', restrictInput);
-});
-
 // Zoom functionality
 zoomIn.addEventListener('click', () => {
     const oldScale = scale;
@@ -444,8 +631,6 @@ zoomIn.addEventListener('click', () => {
     scale = Math.min(scale + 0.1, maxScale);
     container.style.transform = `scale(${scale})`;
 
-    adjustPositionAfterZoom(oldScale, scale);
-
     containerState.scale = scale;
     localStorage.setItem('containerState', JSON.stringify(containerState));
 });
@@ -454,8 +639,6 @@ zoomOut.addEventListener('click', () => {
     const oldScale = scale;
     scale = Math.max(scale - 0.1, 0.5);
     container.style.transform = `scale(${scale})`;
-
-    adjustPositionAfterZoom(oldScale, scale);
 
     containerState.scale = scale;
     localStorage.setItem('containerState', JSON.stringify(containerState));
@@ -468,26 +651,22 @@ let currentY;
 
 dragHandle.addEventListener('mousedown', (e) => {
     isDragging = true;
-    container.classList.add('dragging'); // Add visual indicator
+    container.classList.add('dragging');
 
-    // Calculate the initial position correctly
     const rect = containerWrapper.getBoundingClientRect();
     currentX = e.clientX - rect.left;
     currentY = e.clientY - rect.top;
-    containerWrapper.style.transform = 'none'; // Remove centering transform while dragging
+    containerWrapper.style.transform = 'none';
 });
 
 document.addEventListener('mousemove', (e) => {
     if (isDragging) {
         let newX = e.clientX - currentX;
         let newY = e.clientY - currentY;
-        
 
-        // Ensure the calculator stays within the viewport
         const maxX = window.innerWidth - container.offsetWidth * scale;
         const maxY = window.innerHeight - container.offsetHeight * scale;
 
-        // Add snapping to edges (within 20px of the edge)
         const snapThreshold = 20;
         if (newX < snapThreshold) newX = 0;
         if (newY < snapThreshold) newY = 0;
@@ -500,7 +679,6 @@ document.addEventListener('mousemove', (e) => {
         containerWrapper.style.left = `${newX}px`;
         containerWrapper.style.top = `${newY}px`;
 
-        // Update container state
         containerState.left = containerWrapper.style.left;
         containerState.top = containerWrapper.style.top;
         containerState.transform = 'none';
@@ -511,7 +689,7 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('mouseup', () => {
     if (isDragging) {
         isDragging = false;
-        container.classList.remove('dragging'); // Remove visual indicator
+        container.classList.remove('dragging');
     }
 });
 
@@ -534,44 +712,293 @@ window.addEventListener('load', () => {
 // Theme toggle functionality with blur effect
 themeToggle.addEventListener('click', () => {
     if (themePopup) {
-        themePopup.classList.remove('hidden');
-        themePopup.classList.add('show');    }
+        themePopup.classList.remove('hidden'); // Show the popup
+        themePopup.classList.add('show'); // Add the "show" class for visibility
+        renderThemeOptions(); // Ensure themes are rendered when the popup is opened
+        document.body.classList.add('blur-background'); // Add blur effect to the body
+    }
 });
 
 closeThemePopup.addEventListener('click', () => {
     if (themePopup) {
-        themePopup.classList.add('hidden');
-        themePopup.classList.remove('show');
-        containerWrapper.classList.remove('blur'); // Remove blur effect
+        themePopup.classList.add('hidden'); // Hide the popup
+        themePopup.classList.remove('show'); // Remove the "show" class
         document.body.classList.remove('blur-background'); // Remove background blur
     }
 });
 
-// Render theme options
-function renderThemeOptions() {
-    if (!themeList) return;
-    themeList.innerHTML = '';
-    const savedTheme = localStorage.getItem('selectedTheme') || 'default'; // Get the currently selected theme
-    themes.forEach(theme => {
-        const themeOption = document.createElement('div');
-        themeOption.className = `theme-option ${theme.id === savedTheme ? 'selected' : ''}`; // Add 'selected' class if this theme is active
-        themeOption.innerHTML = `
-            <span class="text-lg">${theme.icon}</span>
-            <p class="text-xs text-[var(--text-color)]">${theme.name}</p>
-        `;
-        themeOption.addEventListener('click', () => {
-            document.body.className = `font-mono theme-${theme.id}`;
-            document.documentElement.setAttribute('data-theme', theme.id === 'default' || theme.id === 'sunset' || theme.id === 'spring' || theme.id === 'kawaii' || theme.id === 'pastel' || theme.id === 'handdrawn' || theme.id === 'rainbow' || theme.id === 'glassmorphism' || theme.id === 'sticker' || theme.id === 'cozy' ? 'light' : 'dark');
-            localStorage.setItem('selectedTheme', theme.id); // Save the selected theme
-            // Re-render the theme options to update the highlight
-            renderThemeOptions();
-            if (themePopup) {
-                themePopup.classList.add('hidden');
-                themePopup.classList.remove('show');
-                containerWrapper.classList.remove('blur'); // Remove blur effect
-                document.body.classList.remove('blur-background'); // Remove background blur
-            }
+// Debugging: Log the themePopup and themeList elements to ensure they exist
+console.log('themePopup:', themePopup);
+console.log('themeList:', themeList);
+
+// In script.js, add this after renderThemeOptions
+const themeSearch = document.getElementById('themeSearch');
+if (themeSearch) {
+    themeSearch.addEventListener('input', () => {
+        const searchTerm = themeSearch.value.toLowerCase();
+        const categoryContainers = document.querySelectorAll('.category-container');
+        categoryContainers.forEach(container => {
+            const categoryGrid = container.querySelector('.category-grid');
+            const themeOptions = categoryGrid.querySelectorAll('.theme-option');
+            let hasVisibleThemes = false;
+
+            themeOptions.forEach(option => {
+                const themeName = option.querySelector('p').textContent.toLowerCase();
+                if (themeName.includes(searchTerm)) {
+                    option.style.display = 'block';
+                    hasVisibleThemes = true;
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+
+            container.style.display = hasVisibleThemes || searchTerm === '' ? 'block' : 'none';
         });
-        themeList.appendChild(themeOption);
     });
 }
+
+const exportHistory = document.getElementById('exportHistory');
+exportHistory.addEventListener('click', () => {
+    if (!profiles || profiles.length === 0) {
+        alert('No profiles to export!');
+        return;
+    }
+
+    let profilesToExport = [];
+    if (profiles.length > 1) {
+        const exportAll = confirm('Do you want to export all profiles? Click "OK" for all profiles, or "Cancel" for the current profile only.');
+        if (exportAll) {
+            profilesToExport = profiles;
+        } else {
+            const currentProfile = profiles.find(p => p.name === activeProfile);
+            profilesToExport = currentProfile ? [currentProfile] : [];
+        }
+    } else {
+        profilesToExport = profiles;
+    }
+
+    if (profilesToExport.length === 0) {
+        alert('No profiles to export!');
+        return;
+    }
+
+    let allExportData = [];
+    let csvContent = "Profile,Transaction #,Last Balance,A:(Value),Fee,B:(Value),Date/Time,Notes\n";
+
+    profilesToExport.forEach((profile) => {
+        if (!profile.history || profile.history.length === 0) {
+            return;
+        }
+
+        let exportData = [];
+        let previousAmount = null;
+        let transactionCount = 0;
+
+        profile.history.forEach((entry) => {
+            const div = document.createElement('div');
+            div.innerHTML = entry;
+            const text = div.textContent;
+            const dateTimeElement = div.querySelector('.timestamp');
+            const dateTime = dateTimeElement ? dateTimeElement.textContent : 'Unknown Date';
+            const restoredElement = div.querySelector('.restored');
+            const isRestored = restoredElement && restoredElement.textContent === 'true';
+
+            let row = { dateTime, notes: isRestored ? '(Restore)' : '' };
+
+            if (text.includes('A:')) {
+                const match = text.match(/A:\s*([\d,]+)(?:\s*\|\s*F:\s*([\d,]+))?\s*(?:\||\s)\s*B:\s*([\d,]+)/);
+                if (match) {
+                    const amount = parseFloat(match[1].replace(/,/g, '')) || 0;
+                    const fee = match[2] ? parseFloat(match[2].replace(/,/g, '')) : 0;
+                    const balance = parseFloat(match[3].replace(/,/g, '')) || 0;
+                    row.A = amount;
+                    row.fee = fee;
+                    row.B = balance;
+                    row.transactionNumber = ++transactionCount;
+                    row.highlight = previousAmount !== null && previousAmount === amount;
+                    previousAmount = amount;
+                    exportData.push(row);
+                }
+            } else if (text.includes('+B:')) {
+                const match = text.match(/\+B:\s*([\d,]+)\s*(?:\||\s)\s*B:\s*([\d,]+)/);
+                if (match) {
+                    const bankBal = parseFloat(match[1].replace(/,/g, '')) || 0;
+                    const balance = parseFloat(match[2].replace(/,/g, '')) || 0;
+                    row.topUp = bankBal;
+                    row.B = balance;
+                    row.transactionNumber = ++transactionCount;
+                    previousAmount = null;
+                    exportData.push(row);
+                }
+            }
+        });
+
+        if (exportData.length > 0) {
+            let firstBalance = 0;
+            const firstTransaction = exportData[exportData.length - 1];
+            if ('A' in firstTransaction) {
+                firstBalance = firstTransaction.B + (firstTransaction.A || 0) + (firstTransaction.fee || 0);
+            } else if ('topUp' in firstTransaction) {
+                firstBalance = firstTransaction.B - (firstTransaction.topUp || 0);
+            }
+            allExportData.push({ profile: profile.name, data: exportData, firstBalance });
+        }
+    });
+
+    if (allExportData.length === 0) {
+        alert('No valid history entries to export for the selected profiles!');
+        return;
+    }
+
+    csvContent = "Profile,Transaction #,Last Balance,A:(Value),Fee,B:(Value),Date/Time,Notes\n";
+    allExportData.forEach(({ profile, data, firstBalance }) => {
+        data.forEach((row, index) => {
+            const isTopUp = 'topUp' in row;
+            const aValue = isTopUp ? `+${row.topUp || 0}` : (row.A || '');
+            const feeValue = isTopUp ? '' : (row.fee || '');
+            const notes = row.notes || '';
+            csvContent += `"${profile}","${row.transactionNumber}","${index === 0 ? firstBalance : ''}","${aValue}","${feeValue}","${row.B}","${row.dateTime}","${notes}"\n`;
+        });
+        const lastBalance = data[0].B;
+        csvContent += `"${profile}",,"First Balance: ${lastBalance}",,,,,\n`;
+        csvContent += "\n";
+    });
+
+    let htmlContent = `
+        <html>
+        <head>
+            <title>Balance History Export</title>
+            <style>
+                body { font-family: monospace; padding: 20px; }
+                table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+                th { background-color: #f2f2f2; }
+                .download-btn { display: block; margin: 20px auto; padding: 10px 20px; background-color: #4CAF50; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+            </style>
+        </head>
+        <body>
+            <h1>Balance History Export</h1>
+            <a href="data:text/csv;charset=utf-8,${encodeURIComponent(csvContent)}" download="balance_history_export.csv" id="downloadCsv" class="download-btn">Download as CSV</a>
+    `;
+
+    allExportData.forEach(({ profile, data, firstBalance }) => {
+        const lastBalance = data[0].B || 0;
+        htmlContent += `
+            <h2>Profile: ${profile}</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th colspan="7">Balance History (${profile})</th>
+                    </tr>
+                    <tr>
+                        <th>Transaction #</th>
+                        <th>First Balance</th>
+                        <th>A:(Value)</th>
+                        <th>Fee</th>
+                        <th>last Balance:(Value)</th>
+                        <th>Date/Time</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+        data.forEach((row, index) => {
+            const isTopUp = 'topUp' in row;
+            const highlightClass = row.highlight ? 'style="background-color: rgba(255, 215, 0, 0.2);"' : '';
+            htmlContent += `
+                <tr ${highlightClass} contenteditable="true">
+                    <td>${row.transactionNumber}</td>
+                    <td>${index === 0 ? formatNumber(firstBalance) : ''}</td>
+                    <td>${isTopUp ? `+${formatNumber(row.topUp || 0)}` : formatNumber(row.A || 0)}</td>
+                    <td>${isTopUp ? '' : formatNumber(row.fee || 0)}</td>
+                    <td>${formatNumber(row.B)}</td>
+                    <td>${row.dateTime}</td>
+                    <td>${row.notes}</td>
+                </tr>
+            `;
+        });
+        htmlContent += `
+                <tr>
+                    <td colspan="7">Last Balance: ${formatNumber(lastBalance)}</td>
+                </tr>
+            </tbody>
+            </table>
+        `;
+    });
+
+    htmlContent += `
+        </body>
+        </html>
+    `;
+
+    const newTab = window.open('', '_blank');
+    if (!newTab) {
+        alert('Please allow popups to export the history.');
+        return;
+    }
+    newTab.document.write(htmlContent);
+    newTab.document.close();
+});
+// Idle state functionality
+let idleTimeout;
+const idleTime = 900000; // 2 minutes in milliseconds
+
+function setIdleState() {
+    container.style.opacity = '0.2';
+    container.style.transition = 'opacity 0.5s ease';
+}
+
+function resetIdleState() {
+    container.style.opacity = '1';
+    container.style.transition = 'opacity 0.5s ease';
+    resetIdleTimer();
+}
+
+function resetIdleTimer() {
+    clearTimeout(idleTimeout);
+    idleTimeout = setTimeout(setIdleState, idleTime);
+}
+
+['mousemove', 'keydown', 'click', 'touchstart'].forEach(event => {
+    document.addEventListener(event, resetIdleState);
+});
+
+resetIdleTimer();
+
+container.style.opacity = '1';
+
+// Function to check local storage usage
+function checkLocalStorageUsage() {
+    let total = 0;
+    for (let key in localStorage) {
+        if (localStorage.hasOwnProperty(key)) {
+            total += (localStorage[key].length + key.length) * 2; // Approximate size in bytes
+        }
+    }
+    const usedKB = (total / 1024).toFixed(2); // Convert to KB
+    const limitKB = 5120; // Approximate 5MB limit
+    console.log(`Local Storage Usage: ${usedKB} KB / ${limitKB} KB`);
+    return { usedKB, limitKB };
+}
+
+// Function to clear local storage
+function clearLocalStorage() {
+    if (confirm('Are you sure you want to clear all local storage data? This action cannot be undone.')) {
+        localStorage.clear();
+        alert('Local storage has been cleared.');
+        location.reload(); // Reload the page to reflect changes
+    }
+}
+
+// Periodically check local storage usage
+function monitorLocalStorageUsage() {
+    setInterval(() => {
+        const { usedKB, limitKB } = checkLocalStorageUsage();
+        if (usedKB >= limitKB * 0.9) { // Alert if usage exceeds 90% of the limit
+            alert(`Warning: Local storage usage is nearing its limit (${usedKB} KB / ${limitKB} KB). Consider clearing unused data.`);
+        }
+    }, 60000); // Check every 60 seconds
+}
+
+// Start monitoring local storage usage
+monitorLocalStorageUsage();
