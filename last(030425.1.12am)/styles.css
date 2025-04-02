@@ -1,0 +1,1410 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --border-color: #d1d5db;
+    --accent-color: #3b82f6;
+    --title-color: #1f2937;
+    --value-color: #2563eb;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --highlight-color: #ef4444;
+    --plus-highlight-color: #10b981;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+    --bg-color: #2a1e3b;
+    --text-color: #e1d5ff;
+    --border-color: #5a4b7a;
+    --accent-color: #ff80bf;
+    --title-color: #ff4d88;
+    --value-color: #ff99cc;
+    --card-bg: #3b2a5a;
+    --shadow-color: rgba(255, 255, 255, 0.772);
+    --highlight-color: #ff6f61;
+    --plus-highlight-color: #66cc99;
+}
+
+/* General Body Styles */
+body,
+html {
+    color: var(--text-color);
+    transition: background 0.5s ease, color 0.3s ease;
+    position: relative;
+    overflow: auto;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease, opacity 0.5s ease;    
+}
+
+/* Default Category */
+body.theme-default {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --border-color: #d1d5db;
+    --accent-color: #3b82f6;
+    --title-color: #1f2937;
+    --value-color: #2563eb;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+body.theme-default::before {
+    background-image: none;
+}
+
+body.theme-darkmode {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --border-color: #444444;
+    --accent-color: #bb86fc;
+    --title-color: #ffffff;
+    --value-color: #03dac6;
+    --card-bg: #2c2c2c;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+}
+body.theme-darkmode::before {
+    background-image: url('images/darkmode.jpg');
+    background-size:cover;
+    background-position: center;
+    opacity: 0.8;
+    animation: darkmodeGlow 10s ease-in-out infinite;
+}
+
+/* Shin-chan Category */
+body.theme-family {
+    --bg-color: #6B6B85;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #638ce6;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #ebe5def1;
+}
+body.theme-family::before {
+    background-image: url('images/Shin-chan/family.jpg');
+    background-size:cover;
+}
+
+body.theme-fishing {
+    --bg-color: #d3e3f5;
+    --text-color: #151c06;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #9dc10c;
+    --value-color: #badb4b;
+    --card-bg: #e6f0fab6;
+}
+body.theme-fishing::before {
+    background-image: url('images/Shin-chan/fishing.jpg');
+}
+
+body.theme-friend {
+    --bg-color: #2a1e3b;
+    --text-color: #f2f6f7;
+    --border-color: #ff7518;
+    --accent-color: #ff7518;
+    --title-color: #ff4500;
+    --value-color: #ecdac4;
+    --card-bg: #0707065e;
+}
+body.theme-friend::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+@keyframes float {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+@keyframes snowfall {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100px; }
+}
+body.theme-friend::before {
+    background-image: url('images/Shin-chan/friend.jpg');
+   
+}
+
+body.theme-luky {
+    --bg-color: #eff1d6;
+    --text-color: #000001;
+    --border-color: #d4c1e8;
+    --accent-color: #ffca28;
+    --title-color: #f57f17;
+    --value-color: #8b8a88;
+    --card-bg: #f9fbe7ee;
+}
+body.theme-luky::before {
+    background-image: url('images/Shin-chan/luky.jpg');
+}
+
+body.theme-peace {
+    --bg-color: #e6f0fa;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #60a5fa;
+    --title-color: #2c5282;
+    --value-color: #4682b4;
+    --card-bg: #f0faffd8;
+}
+body.theme-peace::before {
+    background-image: url('images/Shin-chan/peace.jpg');
+}
+
+body.theme-missing {
+    --bg-color: #f0e6d6;
+    --text-color: #3a2e3f;
+    --border-color: #e8b5a1;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #ff8c00;
+    --card-bg: #fff5e6e0;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+body.theme-missing::before {
+    background-image: url('images/Shin-chan/Missing.jpg');
+}
+
+body.theme-work {
+    --bg-color: #f0e6d6;
+    --text-color: #3a2e3f;
+    --border-color: #e8b5a1;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #ff8c00;
+    --card-bg: #fff5e6e4;
+}
+body.theme-work::before {
+    background-image: url('images/Shin-chan/work.jpg');
+}
+
+body.theme-beach {
+    --bg-color: #e6e3e9;
+    --text-color: #4a3b5ada;
+    --border-color: #d4c1e8;
+    --accent-color: #a4505fc9;
+    --title-color: #BC8F76;
+    --value-color: #BC8F76;
+    --card-bg: #e0e1e1d3;
+}
+body.theme-beach::before {
+    background-image: url('images/Shin-chan/beach.jpg');
+}
+
+body.theme-party {
+    --bg-color: #ffe6f0;
+    --text-color: #676160;
+    --border-color: #ff99cc81;
+    --accent-color: #5FB6E8;
+    --title-color: #ff66b3;
+    --value-color: #ff80c0f3;
+    --card-bg: #b4d3edf8;
+}
+body.theme-party::before {
+    background-image: url('images/Shin-chan/party.jpg');
+}
+
+body.theme-sea {
+    --bg-color: #f0e6f0;
+    --text-color: #5a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fefefe7f;
+}
+body.theme-sea::before {
+    background-image: url('images/Shin-chan/sea.jpg');
+}
+
+body.theme-care {
+    --bg-color: #f0e6f0;
+    --text-color: #5a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #D8936E;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fefefef8;
+}
+body.theme-care::before {
+    background-image: url('images/Shin-chan/care.jpg');
+}
+
+body.theme-rainy {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #2c5282;
+    --value-color: #60a5fa;
+    --card-bg: #e6f0fade;
+}
+body.theme-rainy::before {
+    background-image: url('images/Shin-chan/rainy.jpg');
+    
+}
+
+body.theme-sunny {
+    --bg-color: #f0f4c3;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ffc9286f;
+    --title-color: #f57f17;
+    --value-color: #ffeb3b;
+    --card-bg: #f9fbe7df;
+}
+body.theme-sunny::before {
+    background-image: url('images/Shin-chan/Sunny.jpg');
+    background-size:contain ;
+    background-size: 100%;
+    background-position-y:130%;
+}
+
+body.theme-meteor {
+    --bg-color: #1e1e2f;
+    --text-color: #f3bebebd;
+    --border-color: #5a4b7a;
+    --accent-color: #7c68eeb2;
+    --title-color: #b0c4de;
+    --value-color: #e8d6ded4;
+    --card-bg: #2e396ae0;
+}
+body.theme-meteor::before {
+    background-image: url('images/Shin-chan/meteor.jpg');
+}
+
+/* D.Luffy Category */
+body.theme-strawhat {
+    --bg-color: #f5f5dc;
+    --text-color: #4a3b5a;
+    --border-color: #92a4e6;
+    --accent-color: #000000;
+    --title-color: #f75959;
+    --value-color: #0f0d0e;
+    --card-bg: #b6d4f4e6;
+}
+body.theme-strawhat::before {
+    background-image: url('images/D.Luffy/strawhat.jpg');
+}
+
+body.theme-pirateship {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fff5f7;
+}
+body.theme-pirateship::before {
+    background-image: url('images/D.Luffy/pirateship.jpg');
+}
+body.theme-logo {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #a3969d;
+    --accent-color: #000000;
+    --title-color: #e7dae0;
+    --value-color: #050405;
+    --card-bg: #fff5f7;
+}
+body.theme-logo::before {
+    background-image: url('images/D.Luffy/Sticker.jpg');
+    
+}
+body.theme-logo #container,
+body.theme-logo .tab-btn,
+body.theme-logo .theme-btn,
+body.theme-logo .zoom-btn,
+body.theme-logo .move-btn,
+body.theme-logo .btn-success,
+body.theme-logo .btn-danger {
+    transform: rotate(2deg);
+    box-shadow: 3px 3px 5px var(--shadow-color);
+    border: 2px solid var(--accent-color);
+}
+
+body.theme-adventure {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e0;
+    --accent-color: #050203;
+    --title-color: #d90606;
+    --value-color: #3f0a0a;
+    --card-bg: #c7e1f1;
+}
+body.theme-adventure::before {
+    background-image: url('images/D.Luffy/adventure.jpg');
+}
+
+body.theme-kid {
+    --bg-color: #e6f0fa;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #60a5fa;
+    --title-color: #2c5282;
+    --value-color: #4682b4;
+    --card-bg: #f0faff;
+}
+body.theme-kid::before {
+    background-image: url('images/D.Luffy/kid.jpg');
+}
+
+body.theme-joyboy {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #a08d84;
+    --title-color: #2c5282;
+    --value-color: #de6d80;
+    --card-bg: #dbd4d0ea;
+}
+body.theme-joyboy::before {
+    background-image: url('images/D.Luffy/joyboy.jpg');
+}
+
+body.theme-forest {
+    --bg-color: #d4e4d2;
+    --text-color: #2d4a2e;
+    --border-color: #a8c7a7;
+    --accent-color: #4a8b4c;
+    --title-color: #355e3b;
+    --value-color: #6aa84f;
+    --card-bg: #e8f5e9;
+}
+body.theme-forest::before {
+    background-image: url('images/D.Luffy/Forest.jpg');
+}
+
+body.theme-grandline {
+    --bg-color: #e6f0fa;
+    --text-color: #1a3c5a;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --accent-color: #60a5fa;
+    --title-color: #2c5282;
+    --value-color: #196fb4;
+    --card-bg: rgba(201, 229, 243, 0.785);
+}
+body.theme-grandline::before {
+    background-image: url('images/D.Luffy/grandline.jpg');
+}
+
+body.theme-onepiece {
+    --bg-color: #010101;
+    --text-color: #030303;
+    --border-color: #d4c1e8;
+    --accent-color: #151415;
+    --title-color: #0c0c0c;
+    --value-color: #10050b;
+    --card-bg: #C5C5C5;
+}
+body.theme-onepiece::before {
+    background-image: url('images/D.Luffy/onepiece.jpg');
+}
+
+/* Kampuchea Category */
+body.theme-home {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #2c5282;
+    --value-color: #60a5fa;
+    --card-bg: #e6f0fab6;
+}
+body.theme-home::before {
+    background-image: url('images/kampuchea/Home.jpg');
+}
+
+body.theme-angkor {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #656b6e;
+    --title-color: #535859;
+    --value-color: #4a4749;
+    --card-bg: #d2c7c1d7;
+}
+body.theme-angkor::before {
+    background-image: url('images/kampuchea/Angkor.jpg');
+}
+
+body.theme-night {
+    --bg-color: #1e1e2f;
+    --text-color: #08080a;
+    --border-color: #e4e0ec;
+    --accent-color: #46768B;
+    --title-color: #0d0f11;
+    --value-color: #4e4e50;
+    --card-bg: #bed2da;
+}
+body.theme-night::before {
+    background-image: url('images/kampuchea/Night.jpg');
+}
+
+body.theme-dream {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #2c5282;
+    --value-color: #60a5fa;
+    --card-bg: #e6f0fab6;
+}
+body.theme-dream::before {
+    background-image: url('images/kampuchea/Dream.jpg');
+}
+
+/* Panda Category */
+body.theme-sleeping {
+    --bg-color: #f0f4c3;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #3d3d3c;
+    --title-color: #1a1918;
+    --value-color: #0a0a0a;
+    --card-bg: #e3f2d6eb;
+}
+body.theme-sleeping::before {
+    background-image: url('images/Panda/sleeping.jpg');
+}
+
+body.theme-relax {
+    --bg-color: #0a090a;
+    --text-color: #0f100fcc;
+    --border-color: #d4c1e8;
+    --accent-color: #1a1918;
+    --title-color: #1a1918;
+    --value-color: #ff80bf;
+    --card-bg: #e3f2d6eb;
+}
+body.theme-relax::before {
+    background-image: url('images/Panda/relax.jpg');
+}
+
+body.theme-sticky {
+    --bg-color: #dbd4d7;
+    --text-color: #5a3b4a;
+    --border-color: #AC8E78;
+    --accent-color: #dcb9a0;
+    --title-color: #171614;
+    --value-color: #131312;
+    --card-bg: #e0d1c7;
+}
+body.theme-sticky::before {
+    background-image: url('images/Panda/sticky.jpg');
+}
+
+body.theme-shower {
+    --bg-color: #f0e6f0;
+    --text-color: #5a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fefefe7f;
+}
+body.theme-shower::before {
+    background-image: url('images/Panda/shower.jpg');
+}
+
+body.theme-cute {
+    --bg-color: #e5e1cb;
+    --text-color: #676d50;
+    --border-color: #d1d5db;
+    --accent-color: #8f978cd6;
+    --title-color: #0f0d0c;
+    --value-color: #0f0e0e;
+    --card-bg: #cccabee2;
+}
+body.theme-cute::before {
+    background-image: url('images/Panda/Cute.jpg');
+}
+
+body.theme-gang {
+    --bg-color: #e6f0fa;
+    --text-color: #0e010d;
+    --border-color: #e167cada;
+    --accent-color: #e167cada;
+    --title-color: #de84ec;
+    --value-color: #FEF8E6;
+    --card-bg: #fef8e6ce;
+}
+body.theme-gang::before {
+    background-image: url('images/Panda/Gang.jpg');
+}
+
+/* Nezha Category */
+body.theme-jgmix {
+    --bg-color: #f5e8ff;
+    --text-color: #913D38;
+    --border-color: #913c3870;
+    --accent-color: #913D38;
+    --title-color: #913D38;
+    --value-color: #913D38;
+    --card-bg: #f4e2e5e6;
+}
+body.theme-jgmix::before {
+    background-image: url('images/nezha/Jgmix.jpg');
+}
+
+body.theme-goffy {
+    --bg-color: #f0e6d6;
+    --text-color: #0c040c;
+    --border-color: #e8b5a1;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #13120f;
+    --card-bg: #bfa3a4ea;
+}
+body.theme-goffy::before {
+    background-image: url('images/nezha/goffy.jpg');
+}
+body.theme-goffy::after {
+    content: 'បើមិនពេញចិត្តនឹងវាសនា ម្តេចមិនប្រឆាំងនឹងវាទៅ ?';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 15px;
+    color: rgb(12, 12, 12);
+}
+body.theme-chers {
+    --bg-color: #f5f5dc;
+    --text-color: #4a3b5a;
+    --border-color: #151416;
+    --accent-color: #000000;
+    --title-color: #111010;
+    --value-color: #0f0d0e;
+    --card-bg: #d3ceced4;
+}
+body.theme-chers::before {
+    background-image: url('images/nezha/chers.jpg');
+}
+
+body.theme-kdmv {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #e78888c4;
+    --title-color: #822c2c;
+    --value-color: #dc1e1e;
+    --card-bg: #dcc7ac;
+}
+body.theme-kdmv::before {
+    background-image: url('images/nezha/kdmv.jpg');
+}
+
+body.theme-kesomtus {
+    --bg-color: #f0f4c3;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #0f0f0f;
+    --title-color: #1b1b1a;
+    --value-color: #0d0d0d;
+    --card-bg: #ede4cb;
+}
+body.theme-kesomtus::before {
+    background-image: url('images/nezha/kesomtus.jpg');
+}
+
+body.theme-ganggang {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #8593c1;
+    --title-color: #191921;
+    --value-color: #080707;
+    --card-bg: #e6e2e2;
+}
+body.theme-ganggang::before {
+    background-image: url('images/nezha/ganggang.jpg');
+}
+
+body.theme-jaffy {
+    --bg-color: #ffe6f0;
+    --text-color: #5a3b4a;
+    --border-color: #110d0f;
+    --accent-color: #0f0e0f;
+    --title-color: #181416;
+    --value-color: #0d0e0d;
+    --card-bg: #fff0f5fd;
+}
+body.theme-jaffy::before {
+    background-image: url('images/nezha/jaffy.jpg');
+}
+
+body.theme-pukmak {
+    --bg-color: #f0e6f0;
+    --text-color: #5a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #181717;
+    --title-color: #1d1818;
+    --value-color: #0b090a;
+    --card-bg: #dfcacaf9;
+}
+body.theme-pukmak::before {
+    background-image: url('images/nezha/pukmak.jpg');
+}
+
+body.theme-BL {
+    --bg-color: #e5e1cb;
+    --text-color: #12191d;
+    --border-color: #d1d5db;
+    --accent-color: #1c1817d3;
+    --title-color: #0c0d0f;
+    --value-color: #645e56;
+    --card-bg: #b2bcd1da;
+}
+body.theme-BL::before {
+    background-image: url('images/nezha/BL.jpg');
+}
+
+/* Bubu Dudu Category */
+body.theme-trip {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #525152;
+    --title-color: #1f1a1c;
+    --value-color: #2c2428;
+    --card-bg: #d9edf1;
+}
+body.theme-trip::before {
+    background-image: url('images/Bubu Dudu/trip.jpg');
+}
+body.theme-trip::after {
+    content: 'គ្រាន់បើជាងអ្នកមើល😜';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: rgba(242, 24, 147, 0.5);
+}
+body.theme-street {
+    --bg-color: #ffe6f0;
+    --text-color: #5a3b4a;
+    --border-color: #ff99cc;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fff0f5d5;
+}
+body.theme-street::before {
+    background-image: url('images/Bubu Dudu/street.jpg');
+}
+
+body.theme-heart {
+    --bg-color: #f0e6f0;
+    --text-color: #5a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #dbb0c5;
+    --title-color: #4c4649;
+    --value-color: #3d383a;
+    --card-bg: #fefefe7f;
+}
+body.theme-heart::before {
+    background-image: url('images/Bubu Dudu/sea.jpg');
+}
+
+body.theme-sweet {
+    --bg-color: #030303;
+    --text-color: #030303;
+    --border-color: #d1d5db;
+    --accent-color: #be9f9a;
+    --title-color: #282524;
+    --value-color: #645e56;
+    --card-bg: #e3e1d7e3;
+}
+body.theme-sweet::before {
+    background-image: url('images/Bubu Dudu/night.jpg');
+}
+
+/* Naruto Category */
+body.theme-hikhik {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #2a2728;
+    --title-color: #2f272b;
+    --value-color: #0f070b;
+    --card-bg: #eae3ef;
+}
+body.theme-hikhik::before {
+    background-image: url('images/Naruto/hikhik.jpg');
+}
+
+body.theme-woo {
+    --bg-color: #f0e6d6;
+    --text-color: #211c23;
+    --border-color: #090909;
+    --accent-color: #050404;
+    --title-color: #0a0808;
+    --value-color: #433b31;
+    --card-bg: #e6e2db;
+}
+body.theme-woo::before {
+    background-image: url('images/Naruto/woo.jpg');
+}
+
+body.theme-thnking {
+    --bg-color: #f5f5dc;
+    --text-color: #4a3b5a;
+    --border-color: #151416;
+    --accent-color: #000000;
+    --title-color: #ff66b3;
+    --value-color: #0f0d0e;
+    --card-bg: #ffffffc3;
+}
+body.theme-thnking::before {
+    background-image: url('images/Naruto/hikhik.jpg');
+}
+
+body.theme-team {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #2c5282;
+    --value-color: #60a5fa;
+    --card-bg: #e6f0fab6;
+}
+body.theme-team::before {
+    background-image: url('images/Naruto/team.jpg');
+}
+
+/* Ponyo Category */
+body.theme-first {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #151214;
+    --title-color: #1e191b;
+    --value-color: #c7b5be;
+    --card-bg: #d2e8f4e9;
+}
+body.theme-first::before {
+    background-image: url('images/ponyo/first.jpg');
+}
+
+body.theme-hug {
+    --bg-color: #ffe6f0;
+    --text-color: #5a3b4a;
+    --border-color: #ff99cc;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fff0f5d5;
+}
+body.theme-hug::before {
+    background-image: url('images/ponyo/hug.jpg');
+}
+
+body.theme-nature {
+    --bg-color: #f0e6f0;
+    --text-color: #5a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fefefe7f;
+}
+body.theme-nature::before {
+    background-image: url('images/ponyo/nature.jpg');
+}
+
+body.theme-warm {
+    --bg-color: #e5e1cb;
+    --text-color: #0f0e0e;
+    --border-color: #d1d5db;
+    --accent-color: #1c1b1a;
+    --title-color: #191c1a;
+    --value-color: #191816;
+    --card-bg: #cccabec4;
+}
+body.theme-warm::before {
+    background-image: url('images/ponyo/warm.jpg');
+}
+
+body.theme-ocean {
+    --bg-color: #e6f0fa;
+    --text-color: #1a3c5a;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --accent-color: #60a5fa;
+    --title-color: #2c5282;
+    --value-color: #196fb4;
+    --card-bg: rgba(201, 229, 243, 0.785);
+}
+body.theme-ocean::before {
+    background-image: url('images/ponyo/ocean.jpg');
+}
+
+/* Doraemon&Stitch Category */
+body.theme-wating {
+    --bg-color: #f0f4c3;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ffca28;
+    --title-color: #f57f17;
+    --value-color: #ffeb3b;
+    --card-bg: #f9fbe7d7;
+}
+body.theme-wating::before {
+    background-image: url('images/Doraemon&Stitch/wating.jpg');
+}
+
+body.theme-hello {
+    --bg-color: #e5e1cb;
+    --text-color: #ea1616;
+    --border-color: #d1d5db;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #645e56;
+    --card-bg: #cccabec4;
+}
+body.theme-hello::before {
+    background-image: url('images/Doraemon&Stitch/hello.jpg');
+}
+
+body.theme-lolo {
+    --bg-color: #f5e8ff;
+    --text-color: #0d0b0e;
+    --border-color: #d4c1e8;
+    --accent-color: #2974ddb3;
+    --title-color: #66c4ffdf;
+    --value-color: #4134ef;
+    --card-bg: #d2d9f0d9;
+}
+body.theme-lolo::before {
+    background-image: url('images/Doraemon&Stitch/lolo.jpg');
+}
+
+body.theme-cool {
+    --bg-color: #f0e6d6;
+    --text-color: #3a2e3f;
+    --border-color: #e8b5a1;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #ff8c00;
+    --card-bg: #fff5e6e4;
+}
+body.theme-cool::before {
+    background-image: url('images/Doraemon&Stitch/cool.jpg');
+}
+
+body.theme-help {
+    --bg-color: #f5f5dc;
+    --text-color: #4a3b5a;
+    --border-color: #151416;
+    --accent-color: #000000;
+    --title-color: #ff66b3;
+    --value-color: #0f0d0e;
+    --card-bg: #ffffffc3;
+}
+body.theme-help::before {
+    background-image: url('images/Doraemon&Stitch/help.jpg');
+}
+
+/* Totoro Category */
+body.theme-rgcham {
+    --bg-color: #d3e3f5;
+    --text-color: #0d0d0ec7;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #000000;
+    --value-color: #020202;
+    --card-bg: #a0a9b1f0;
+}
+body.theme-rgcham::before {
+    background-image: url('images/Totoro/rgcham.jpg');
+}
+
+body.theme-collapsing {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #282728;
+    --title-color: #272124;
+    --value-color: #2e2b2c;
+    --card-bg: #eef5f0;
+}
+body.theme-collapsing::before {
+    background-image: url('images/Totoro/collapsing.jpg');
+}
+
+body.theme-whoops {
+    --bg-color: #f0e6d6;
+    --text-color: #3a2e3f;
+    --border-color: #e6e3e3;
+    --accent-color: #121211;
+    --title-color: #171616;
+    --value-color: #121211;
+    --card-bg: #e8e5e0;
+}
+body.theme-whoops::before {
+    background-image: url('images/Totoro/whoops.jpg');
+}
+
+/* Weather&Flower Category */
+body.theme-daisy {
+    --bg-color: #020202;
+    --text-color: #3a2e3f;
+    --border-color: #e1d7d3;
+    --accent-color: #050404;
+    --title-color: #131110;
+    --value-color: #090909;
+    --card-bg: #f3f1edf7;
+}
+body.theme-daisy::before {
+    background-image: url('images/Weather&Flower/Daisy.jpg');
+}
+
+body.theme-campfire {
+    --bg-color: #f5f5dc;
+    --text-color: #4a3b5a;
+    --border-color: #edecee;
+    --accent-color: #000000;
+    --title-color: #222021;
+    --value-color: #0f0d0e;
+    --card-bg: #eae3e5e3;
+}
+body.theme-campfire::before {
+    background-image: url('images/Weather&Flower/campfire.jpg');
+}
+
+body.theme-cozy {
+    --bg-color: #f0e6d6;
+    --text-color: #3a2e3f;
+    --border-color: #e8b5a1;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #ff8c00;
+    --card-bg: #fff5e6eb;
+}
+body.theme-cozy::before {
+    background-image: url('images/Weather&Flower/cozy.jpg');
+    animation: cozyGlow 10s ease-in-out infinite;
+}
+body.theme-meet {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #2c5282;
+    --value-color: #60a5fa;
+    --card-bg: #b4d3edf8;
+}
+body.theme-meet::before {
+    background-image: url('images/Weather&Flower/meet.jpg');
+}
+
+body.theme-safe {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #2c5282;
+    --value-color: #60a5fa;
+    --card-bg: #b4d3edf8;
+}
+
+body.theme-safe::before {
+    background-image: url('images/Weather&Flower/safe.jpg');
+}
+
+body.theme-sakura {
+    --bg-color: #ffe6f0;
+    --text-color: #5a3b4a;
+    --border-color: #ff99cc;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fff0f5d5;
+}
+body.theme-sakura::before {
+    background-image: url('images/Weather&Flower/sakura.jpg');
+}
+
+body.theme-village {
+    --bg-color: #f0e6d6;
+    --text-color: #3a2e3f;
+    --border-color: #e8b5a1;
+    --accent-color: #ff6f61;
+    --title-color: #ff4500;
+    --value-color: #ff8c00;
+    --card-bg: #f3f1eda6;
+}
+body.theme-village::before {
+    background-image: url('images/Weather&Flower/village.jpg');
+}
+body.theme-village::after {
+    content: 'Back When I Was Younger';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+/* Rest of your existing CSS remains unchanged below this point */
+#containerWrapper {
+    position: absolute;
+    z-index: 1;
+    transition: left 0.1s ease, top 0.1s ease;
+}
+
+#container {
+    background: var(--card-bg);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+    transform-origin: center;
+
+}
+
+.container.dragging {
+    box-shadow: 0 0 15px var(--shadow-color);
+    cursor: grabbing;
+}
+.slide-in {
+    animation: slideIn 0.4s ease-out;
+}
+
+.pulse {
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.bounce {
+    animation: bounce 0.5s ease;
+}
+
+.spin:hover {
+    animation: spin 0.5s linear 1;
+}
+
+.glow:hover {
+    animation: glow 1s ease-in-out 1;
+}
+
+
+/* Buttons */
+.theme-btn,
+.zoom-btn,
+.move-btn,
+.bag-btn,
+.tab-btn {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-btn:hover,
+.zoom-btn:hover,
+.move-btn:hover,
+.bag-btn:hover,
+.tab-btn:hover:not(.active) {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.btn-success {
+    background: #28a745; /* Bootstrap 4 btn-success color */
+    border-color: #28a745;
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.btn-success:hover {
+    background: #218838; /* Darker shade for hover */
+    border-color: #1e7e34;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    animation: bounce 0.5s ease;
+    
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    animation: bounce 0.5s ease;
+}
+
+/* History Card */
+.history-card {
+    padding: 4px 8px;
+    margin: 2px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.history-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px var(--shadow-color);
+}
+.history-card {
+    animation: slideInFromTop 0.3s ease-out;
+}
+@keyframes slideInFromTop {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+#exportHistory {
+    background: var(--accent-color);
+    color: white;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#exportHistory:hover {
+    background: var(--highlight-color);
+    transform: translateY(-2px);
+}
+
+#tabList {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px 0;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem; /* Tailwind: px-4 py-2 */
+    margin: 0 0.25rem; /* Tailwind: mx-1 */
+    border-radius: 20px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.tab-btn:hover:not(.active) {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.tab-btn.active {
+    background: var(--accent-color);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px var(--shadow-color);
+}
+
+
+
+/* Inputs */
+input {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 3px rgba(255, 153, 204, 0.1);
+
+}
+
+#currentBalanceDisplay {
+    border: none;
+    border-bottom: 2px solid var(--value-color);
+}
+#amountInput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    text-align: center;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-size: 13px;
+}
+
+.highlight {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: var(--highlight-color);
+}
+
+.plus-highlight {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: var(--plus-highlight-color);
+}
+
+.last-highlight {
+    background-color: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+}
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #100707;
+    margin-top: 10px;
+    gap: 1px;
+    animation: fadeIn 0.6s ease-in;
+    padding-bottom: 10px;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    background-color: #4a3b5a;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    display: none;
+    z-index: 10;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.history-card:hover .tooltip {
+    display: block;
+}
+
+/* Theme Popup */
+#themePopup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#themePopup.show {
+    display: flex;
+    opacity: 1;
+}
+
+#themePopup > div {
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    max-width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.theme-option {
+    padding: 8px;
+    border-radius: 8px;
+    background: var(--card-bg);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.theme-option.selected {
+    background: var(--accent-color);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.category-header {
+    background: var(--card-bg);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.category-header:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.category-grid:not(.hidden) {
+    max-height: 500px;
+}
+
+.category-header i {
+    transition: transform 0.3s ease;
+}
+
+.category-header i.rotate-180 {
+    transform: rotate(180deg);
+}
+
+/* Animations */
+@keyframes darkmodeGlow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes khmerGlow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.pulse {
+    animation: pulse 1.2s ease-in-out infinite;
+}

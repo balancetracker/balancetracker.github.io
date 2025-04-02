@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://img.icons8.com/ios-filled/50/000000/favorite.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8WZGNJSYDP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8WZGNJSYDP');
+    </script>
+</head>
+<body class="font-mono">
+    <!-- Tooltip (moved outside container for proper positioning) -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <!-- Wrapper for positioning -->
+    <div id="containerWrapper" class="absolute">
+        <div id="container" class="w-72 rounded-2xl shadow-xl border border-[var(--border-color)] slide-in transition-all duration-300">
+            <!-- Header with Move Button -->
+            <div class="flex justify-between items-center mb-3 p-4">
+                <div class="flex items-center space-x-2">
+                    <button id="themeToggle" class="theme-btn p-2 rounded-full bg-[var(--card-bg)] hover:bg-opacity-80 transition-all">
+                        <i class="fas fa-palette text-sm"></i> Theme
+                    </button>
+                    <button id="notepadButton" class="bag-btn p-2 rounded-full bg-[var(--card-bg)] hover:bg-opacity-80 transition-all" title="Open Notepad">
+                        <i class="fas fa-sticky-note text-sm"></i>
+                    </button>
+                    <button id="dragHandle" class="move-btn p-2 rounded-full bg-[var(--card-bg)] hover:bg-opacity-80 transition-all" title="Move Calculator">
+                        <i class="fas fa-arrows-alt text-sm"></i>
+                    </button>
+                </div>
+                <div class="flex space-x-2">
+                    <div class="flex space-x-2">
+                        <button id="zoomIn" class="zoom-btn p-2 rounded-full bg-[var(--card-bg)] hover:bg-opacity-80 transition-all">
+                            <i class="fas fa-search-plus text-sm"></i>
+                        </button>
+                        <button id="zoomOut" class="zoom-btn p-2 rounded-full bg-[var(--card-bg)] hover:bg-opacity-80 transition-all">
+                            <i class="fas fa-search-minus text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme Popup -->
+            <div id="themePopup" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                <div class="bg-[var(--card-bg)] p-4 rounded-xl shadow-lg max-w-sm w-full max-h-[80vh] overflow-y-auto">
+                    <h3 class="text-lg font-semibold text-[var(--text-color)] mb-3">Select Theme</h3>
+                    <div id="themeList" class="space-y-2"></div>
+                    <button id="closeThemePopup" class="mt-4 w-full py-2 btn-danger text-white rounded-lg text-xs transition-all">
+                        <i class="fas fa-times mr-1"></i> Close
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="flex justify-between items-center mb-4 px-4">
+                <div id="tabList" class="flex justify-between items-center w-full p-2">
+                    <!-- Tabs will be dynamically inserted here -->
+                </div>
+                <div class="flex space-x-2">
+                    <button id="addTab" class="tab-btn p-2 rounded-full bg-[var(--accent-color)] hover:bg-opacity-80 transition-all">
+                        <i class="fas fa-plus add-icon text-sm"></i>
+                    </button>
+                    <button id="deleteTab" class="tab-btn p-2 rounded-full bg-[var(--highlight-color)] hover:bg-opacity-80 transition-all">
+                        <i class="fas fa-minus delete-icon text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Balance Display -->
+            <div class="text-center mb-4 bg-gradient-to-br from-[var(--card-bg)] to-[var(--accent-color)]/10 py-3 rounded-xl shadow-sm mx-4">
+                <h2 class="text-sm font-semibold text-[var(--title-color)]">Current Balance</h2>
+                <input id="currentBalanceDisplay" type="text" class="w-3/4 mx-auto text-lg font-bold text-center bg-transparent border-b-2 border-[var(--value-color)] text-[var(--value-color)] pulse focus:outline-none" placeholder="">
+                <div>
+                    <label class="block text-xs font-medium text-[var(--text-color)] mt-2">Amount</label>
+                    <input id="amountInput" type="text" placeholder="Amount of Ticket" class="w-full p-2 border border-[var(--border-color)] rounded-lg text-center bg-[var(--card-bg)] text-[var(--text-color)] text-sm">
+                </div>
+            </div>
+
+            <!-- Calculator Inputs -->
+            <div class="space-y-3 px-4 items-center">
+                <div class="flex space-x-2">
+                    <div class="w-full">
+                        <label class="block text-xs font-medium text-[var(--text-color)] text-center">Top-up</label>
+                        <input id="bankBalanceInput" type="text" class="w-full p-2 border border-[var(--border-color)] rounded-lg text-center bg-[var(--card-bg)] text-[var(--text-color)] text-sm" placeholder="">
+                    </div>
+                    <div class="w-full">
+                        <label class="block text-xs font-medium text-[var(--text-color)] text-center">Fee-Box</label>
+                        <input id="feeInput" type="text" placeholder="Fee" class="w-full p-2 border border-[var(--border-color)] rounded-lg text-center bg-[var(--card-bg)] text-[var(--text-color)] text-sm">
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button id="pasteButton" class="w-full py-2 btn-success text-white rounded-lg text-xs transition-all">
+    <i class="fas fa-paste mr-1"></i> ALL-IN
+</button>
+                        <!-- Fixed spacing and alignment -->
+                    </button>
+                </div>
+            </div>
+
+            <!-- History -->
+            <div class="mt-4 max-h-28 overflow-y-auto border-t border-[var(--border-color)] pt-2 px-4 text-center">
+                <h2 class="text-base font-semibold text-[var(--text-color)]">History</h2>
+                <div id="historyList" class="space-y-1"></div>
+            </div>
+
+            <!-- Reset and Export Buttons -->
+            <div class="flex space-x-2 px-4 mt-4">
+                <button id="resetHistory" class="w-1/2 py-2 btn-danger text-white rounded-lg text-xs transition-all">
+                    <i class="fas fa-trash-alt mr-1"></i> Reset History
+                </button>
+                <button id="exportHistory" class="w-1/2 py-2 bg-black text-white rounded-lg text-xs transition-all">
+                    <i class="fas fa-file-export mr-1"></i> Export
+                </button>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer px-4">
+                V01.17 <i class="fa-solid fa-laptop-code"></i>
+            </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply the saved theme without resetting to default
+            const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+            document.body.className = `font-mono theme-${savedTheme}`;
+            document.documentElement.setAttribute('data-theme', 
+                ['default', 'family', 'fishing', 'luky', 'peace', 'missing', 'work', 'beach', 'party', 'sea', 'care', 'rainy', 'sunny', 'meteor', 
+                 'strawhat', 'pirateship', 'logo', 'adventure', 'kid', 'joyboy', 'forest', 'grandline', 'onepiece', 
+                 'home', 'angkor', 'dream', 
+                 'sleeping', 'relax', 'sticky', 'shower', 'cute', 'gang', 
+                 'jgmix', 'goffy', 'chers', 'kdmv', 'kesomtus', 
+                 'trip', 'street', 'heart', 'sweet', 
+                 'hikhik', 'woo', 'thnking', 'team', 
+                 'first', 'hug', 'nature', 'warm', 'ocean', 
+                 'wating', 'hello', 'lolo', 'cool', 'help', 
+                 'rgcham', 'collapsing', 'whoops', 
+                 'daisy', 'campfire', 'cozy', 'meet', 'safe', 'sakura', 'village'].includes(savedTheme) ? 'light' : 'dark'
+            );
+
+            renderTabs();
+            loadProfile(activeProfile);
+            renderThemeOptions();
+        });
+
+        const notepadButton = document.getElementById('notepadButton');
+        notepadButton.addEventListener('click', () => {
+            window.open('https://anotepad.com', '_blank');
+        });
+    </script>
+</body>
+</html>
