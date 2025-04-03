@@ -91,7 +91,7 @@ const themes = [
         category: 'Kampuchea',
         items: [
             { id: 'home', name: 'Home', preview: 'images/kampuchea/Home.jpg' },
-            { id: 'angkor', name: 'Angkor', preview: 'images/kampuchea/angkor.jpg' },    
+            { id: 'angkor', name: 'Angkor', preview: 'images/kampuchea/angkor.jpg' },
             { id: 'night', name: 'Night', preview: 'images/kampuchea/Night.jpg' },
             { id: 'dream', name: 'Dream', preview: 'images/kampuchea/Dream.jpg' }
         ]
@@ -211,7 +211,7 @@ function renderThemeOptions() {
             themeOption.setAttribute('data-theme-id', theme.id);
             themeOption.innerHTML = `
                 <div class="flex flex-col items-center">
-                    <div class="w-8 h-8 rounded-full bg-cover bg-center" style="background-image: url('${theme.preview || ''}');"></div>
+                    <div class="w-8 h-8 rounded-full bg-cover bg-center" style="background-image: url('${theme.preview || 'images/default.png'}');"></div>
                     <p class="text-xs text-[var(--text-color)]">${theme.name || 'Unnamed Theme'}</p>
                 </div>
             `;
@@ -270,6 +270,17 @@ function renderThemeOptions() {
         categoryContainer.appendChild(categoryGrid);
 
         categoryHeader.addEventListener('click', () => {
+            // Collapse all other categories
+            document.querySelectorAll('.category-container').forEach(container => {
+                const otherGrid = container.querySelector('.category-grid');
+                const otherChevron = container.querySelector('.category-header i');
+                if (otherGrid !== categoryGrid) {
+                    otherGrid.classList.add('hidden');
+                    otherChevron.classList.remove('rotate-180');
+                }
+            });
+
+            // Toggle the clicked category
             categoryGrid.classList.toggle('hidden');
             const chevron = categoryHeader.querySelector('i');
             chevron.classList.toggle('rotate-180');
