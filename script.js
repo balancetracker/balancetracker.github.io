@@ -91,7 +91,7 @@ const themes = [
         category: 'Kampuchea',
         items: [
             { id: 'home', name: 'Home', preview: 'images/kampuchea/Home.jpg' },
-            { id: 'angkor', name: 'Angkor', preview: 'images/kampuchea/angkor.jpg' },
+            { id: 'angkor', name: 'Angkor', preview: 'images/kampuchea/Angkor.jpg' },
             { id: 'night', name: 'Night', preview: 'images/kampuchea/Night.jpg' },
             { id: 'dream', name: 'Dream', preview: 'images/kampuchea/Dream.jpg' }
         ]
