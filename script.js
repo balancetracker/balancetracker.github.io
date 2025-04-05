@@ -115,10 +115,12 @@ const themes = [
             { id: 'chers', name: 'Chers', preview: 'images/nezha/chers.jpg' },
             { id: 'kdmv', name: 'KDMV', preview: 'images/nezha/kdmv.jpg' },
             { id: 'ganggang', name: 'ganggang', preview: 'images/nezha/ganggang.jpg' },
-            { id: 'jaffy', name: ' jaffy', preview: 'images/nezha/jaffy.jpg' },
-            { id: 'pukmak', name: 'pukmak', preview: 'images/nezha/pukmak.jpg' },
-            { id: 'BL', name: 'BL', preview: 'images/nezha/BL.jpg' }
-
+            { id: 'jaffy', name: 'Jaffy', preview: 'images/nezha/jaffy.jpg' },
+            { id: 'pukmak', name: 'Pukmak', preview: 'images/nezha/pukmak.jpg' },
+            { id: 'BL', name: 'BL', preview: 'images/nezha/BL.jpg' },
+            { id: 'aobing', name: 'Aobing', preview: 'images/nezha/aobing.jpg' },
+            { id: 'aobing2', name: 'Aobing 2', preview: 'images/nezha/aobing2.jpg' },
+            { id: 'power', name: 'Power', preview: 'images/nezha/power.jpg' }
         ]
     },
     {
@@ -131,12 +133,15 @@ const themes = [
         ]
     },
     {
-        category: 'Naruto',
+        category: 'Naruto& slayer& Gojo',
         items: [
             { id: 'hikhik', name: 'Hikhik', preview: 'images/Naruto/hikhik.jpg' },
             { id: 'woo', name: 'Woo?', preview: 'images/Naruto/woo.jpg' },
-            { id: 'thnking', name: 'Thnking', preview: 'images/Naruto/hikhik.jpg' },
+            { id: 'thnking', name: 'Thnking', preview: 'images/Naruto/thnking.jpg' },
             { id: 'team', name: 'Team', preview: 'images/Naruto/team.jpg' },
+            { id: 'DS', name: 'DS', preview: 'images/Naruto/DS.jpg' },
+            { id: 'mate', name: 'Mate', preview: 'images/Naruto/mate.jpg' },
+            { id: 'gojo', name: 'Gojo', preview: 'images/Naruto/gojo.jpg' }
         ]
     },
     {

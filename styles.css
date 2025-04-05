@@ -545,7 +545,7 @@ body.theme-gang {
     --border-color: #e167cada;
     --accent-color: #e167cada;
     --title-color: #de84ec;
-    --value-color: #FEF8E6;
+    --value-color: #131312;
     --card-bg: #fef8e6ce;
 }
 body.theme-gang::before {
@@ -677,6 +677,45 @@ body.theme-BL::before {
     background-image: url('images/nezha/BL.jpg');
 }
 
+body.theme-aobing {
+    --bg-color: #d3e3f5;
+    --text-color: #1a3c5a;
+    --border-color: #a3c1e0;
+    --accent-color: #4682b4;
+    --title-color: #2c5282;
+    --value-color: #60a5fa;
+    --card-bg: #e6f0fab3;
+}
+body.theme-aobing::before {
+    background-image: url('images/nezha/aobing.jpg');
+}
+
+body.theme-aobing2 {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #e55bbc;
+    --title-color: #e55bbcc0;
+    --value-color: #e55bbcb9;
+    --card-bg: #afc3dbd7;
+}
+body.theme-aobing2::before {
+    background-image: url('images/nezha/aobing2.jpg');
+}
+
+body.theme-power {
+    --bg-color: #ffe6f0;
+    --text-color: #5a3b4a;
+    --border-color: #e68181;
+    --accent-color: #e68181;
+    --title-color: #e68181;
+    --value-color: #e75348;
+    --card-bg: #cacacae8;
+}
+body.theme-power::before {
+    background-image: url('images/nezha/power.jpg');
+}
+
 /* Bubu Dudu Category */
 body.theme-trip {
     --bg-color: #f5e8ff;
@@ -766,15 +805,15 @@ body.theme-woo::before {
 
 body.theme-thnking {
     --bg-color: #f5f5dc;
-    --text-color: #4a3b5a;
+    --text-color: #000000;
     --border-color: #151416;
     --accent-color: #000000;
-    --title-color: #ff66b3;
+    --title-color: #74724e;
     --value-color: #0f0d0e;
-    --card-bg: #ffffffc3;
+    --card-bg: #e0c3bab3;
 }
 body.theme-thnking::before {
-    background-image: url('images/Naruto/hikhik.jpg');
+    background-image: url('images/Naruto/thnking.jpg');
 }
 
 body.theme-team {
@@ -788,6 +827,47 @@ body.theme-team {
 }
 body.theme-team::before {
     background-image: url('images/Naruto/team.jpg');
+}
+
+/* Naruto& slayer& Gojo Category */
+body.theme-DS {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #2a2728;
+    --title-color: #2f272b;
+    --value-color: #0f070b;
+    --card-bg: #e7eed4f1;
+}
+body.theme-DS::before {
+    background-image: url('images/Naruto/DS.jpg');
+}
+
+body.theme-mate {
+    --bg-color: #f0e6d6;
+    --text-color: #0f0e0a;
+    --border-color: #090909;
+    --accent-color: #050404;
+    --title-color: #d9ae22;
+    --value-color: #433b31;
+    --card-bg: #e7e2daba;
+}
+body.theme-mate::before {
+    background-image: url('images/Naruto/mate.jpg');
+}
+
+body.theme-gojo {
+    --bg-color: #f6f6f641;
+    --text-color: #eae7e7d1;
+    --border-color: #0000002d;
+    --accent-color: #00000080;
+    --title-color: #efe3e390;
+    --value-color: #f1f0f0;
+    --card-bg: hsla(240, 4%, 15%, 0.941);
+}
+body.theme-gojo::before {
+    background-image: url('images/Naruto/gojo.jpg');
+    background-size: cover;
 }
 
 /* Ponyo Category */
