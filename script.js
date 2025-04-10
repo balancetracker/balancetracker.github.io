@@ -52,6 +52,10 @@ const themes = [
         items: [
             { id: 'default', name: 'Default', icon: '', preview: 'images/default.png' },
             { id: 'darkmode', name: 'Dark Mode', icon: '🌙', preview: 'images/darkmode.jpg' },
+            { id: 'loyheh', name: 'Loyheh', icon: '', preview: 'images/loyheh.jpg' },
+            { id: 'noname', name: 'Noname', icon: '', preview: 'images/noname.jpg' },
+            { id: 'smile', name: 'Smile', icon: '', preview: 'images/smile.jpg' },
+            { id: 'sne', name: 'Sne', icon: '', preview: 'images/sne.jpg' }
         ]
     },
     {
@@ -111,6 +115,7 @@ const themes = [
         category: 'Nezha',
         items: [
             { id: 'jgmix', name: 'Jg Mix', preview: 'images/nezha/Jgmix.jpg' },
+            { id: 'wow', name: 'Wow', preview: 'images/nezha/wow.jpg' },
             { id: 'goffy', name: 'Goffy', preview: 'images/nezha/goffy.jpg' },
             { id: 'chers', name: 'Chers', preview: 'images/nezha/chers.jpg' },
             { id: 'kdmv', name: 'KDMV', preview: 'images/nezha/kdmv.jpg' },
@@ -121,6 +126,7 @@ const themes = [
             { id: 'aobing', name: 'Aobing', preview: 'images/nezha/aobing.jpg' },
             { id: 'aobing2', name: 'Aobing 2', preview: 'images/nezha/aobing2.jpg' },
             { id: 'power', name: 'Power', preview: 'images/nezha/power.jpg' }
+            
         ]
     },
     {
@@ -1018,3 +1024,40 @@ function monitorLocalStorageUsage() {
 
 // Start monitoring local storage usage
 monitorLocalStorageUsage();
+// Existing code up to themeToggle event listener remains unchanged
+
+themeToggle.addEventListener('click', () => {
+    if (themePopup) {
+        themePopup.classList.remove('hidden');
+        themePopup.classList.add('show');
+        renderThemeOptions();
+        document.body.classList.add('blur-background');
+    }
+});
+
+closeThemePopup.addEventListener('click', () => {
+    if (themePopup) {
+        themePopup.classList.add('hidden');
+        themePopup.classList.remove('show');
+        document.body.classList.remove('blur-background');
+    }
+});
+
+// Listen for theme changes across tabs
+window.addEventListener('storage', (event) => {
+    if (event.key === 'selectedTheme') {
+        const newTheme = event.newValue || 'default';
+        document.body.className = `font-mono theme-${newTheme}`;
+        document.documentElement.setAttribute('data-theme', 
+            ['default', 'family', 'fishing', 'luky', 'peace', 'missing', 'work', 'beach', 'party', 'sea', 'care', 'rainy', 'sunny', 'meteor', 
+             'strawhat', 'pirateship', 'logo', 'adventure', 'kid', 'joyboy', 'forest', 'grandline', 'onepiece', 
+             'home', 'angkor', 'dream', 'sleeping', 'relax', 'sticky', 'shower', 'cute', 'gang', 
+             'jgmix', 'goffy', 'chers', 'kdmv', 'kesomtus', 'trip', 'street', 'heart', 'sweet', 
+             'hikhik', 'woo', 'thnking', 'team', 'first', 'hug', 'nature', 'warm', 'ocean', 
+             'wating', 'hello', 'lolo', 'cool', 'help', 'rgcham', 'collapsing', 'whoops', 
+             'd Daisy', 'campfire', 'cozy', 'meet', 'safe', 'sakura', 'village'].includes(newTheme) ? 'light' : 'dark'
+        );
+        renderThemeOptions(); // Re-render to update selected state
+    }
+});
+

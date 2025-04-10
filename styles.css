@@ -81,6 +81,58 @@ body.theme-darkmode::before {
     opacity: 0.8;
     animation: darkmodeGlow 10s ease-in-out infinite;
 }
+body.theme-loyheh {
+    --bg-color: #070706;
+    --text-color: #050606b7;
+    --border-color: #d6cfddd6;
+    --accent-color: #97bdfa;
+    --title-color: #1f2937;
+    --value-color: #060606b0;
+    --card-bg: #cbdfd8b7;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+body.theme-loyheh::before {
+    background-image: url('images/loyheh.jpg');
+}
+
+body.theme-noname {
+    --bg-color: #000000;
+    --text-color: #030303b3;
+    --border-color: #e9e9ea;
+    --accent-color: #060606;
+    --title-color: #090a0a;
+    --value-color: #040404;
+    --card-bg: #b5bdc1cc;
+}
+body.theme-noname::before {
+    background-image: url('images/noname.jpg');
+}
+
+body.theme-smile {
+    --bg-color: #f5e8ff;
+    --text-color: #040504;
+    --border-color: #d4c1e8;
+    --accent-color: #080708cb;
+    --title-color: #5E6C6B;
+    --value-color: #070708;
+    --card-bg: #c8d0d6c7;
+}
+body.theme-smile::before {
+    background-image: url('images/smile.jpg');
+}
+
+body.theme-sne {
+    --bg-color: #f0e6f0;
+    --text-color: #5a3b5a;
+    --border-color: #d4c1e8;
+    --accent-color: #ff99cc;
+    --title-color: #ff66b3;
+    --value-color: #ff80bf;
+    --card-bg: #fefefe7f;
+}
+body.theme-sne::before {
+    background-image: url('images/sne.jpg');
+}
 
 /* Shin-chan Category */
 body.theme-family {
@@ -565,7 +617,27 @@ body.theme-jgmix {
 body.theme-jgmix::before {
     background-image: url('images/nezha/Jgmix.jpg');
 }
-
+body.theme-wow {
+    --bg-color: #f5e8ff;
+    --text-color: #4a3b5a;
+    --border-color: #b8b3bd;
+    --accent-color: #18bdf4;
+    --title-color: #0992ab;
+    --value-color: #131313;
+    --card-bg: #d4f1f2c3;
+}
+body.theme-wow::after {
+    content: 'Wow សស្គូស😆🤪';
+    position: absolute;
+    bottom: 10px;
+    right: 100px;
+    font-family: "Preahvihear", sans-serif;
+    font-size: 25px;
+    color: rgb(7, 8, 8);
+}
+body.theme-wow::before {
+    background-image: url('images/nezha/wow.jpg');
+}
 body.theme-goffy {
     --bg-color: #f0e6d6;
     --text-color: #0c040c;
@@ -582,9 +654,10 @@ body.theme-goffy::after {
     content: 'បើមិនពេញចិត្តនឹងវាសនា ម្តេចមិនប្រឆាំងនឹងវាទៅ ?';
     position: absolute;
     bottom: 10px;
-    right: 10px;
-    font-size: 15px;
-    color: rgb(12, 12, 12);
+    right: 60px;
+    font-family: "Preahvihear", sans-serif;
+    font-size: 19px;
+    color: rgb(7, 8, 8);
 }
 body.theme-chers {
     --bg-color: #f5f5dc;
@@ -730,12 +803,13 @@ body.theme-trip::before {
     background-image: url('images/Bubu Dudu/trip.jpg');
 }
 body.theme-trip::after {
+    font-family: "Preahvihear", sans-serif;
     content: 'គ្រាន់បើជាងអ្នកមើល😜';
     position: absolute;
     bottom: 10px;
     right: 10px;
     font-size: 20px;
-    color: rgba(242, 24, 147, 0.5);
+    color: rgba(219, 11, 11, 0.5);
 }
 body.theme-street {
     --bg-color: #ffe6f0;
@@ -1488,3 +1562,86 @@ input:focus {
 .pulse {
     animation: pulse 1.2s ease-in-out infinite;
 }
+/* Existing styles remain unchanged until the end */
+
+.notepad-container {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    overflow: hidden;
+    resize: both;
+    min-width: 200px;
+    min-height: 150px;
+    max-width: 80vw;
+    max-height: 80vh;
+    z-index: 1000;
+}
+
+.notepad-header {
+    background: var(--accent-color);
+    color: white;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    font-size: 14px;
+}
+
+.notepad-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 2px 5px;
+    transition: color 0.3s ease;
+}
+
+.notepad-header button:hover {
+    color: var(--highlight-color);
+}
+
+.notepad-textarea {
+    width: 100%;
+    height: calc(100% - 30px); /* Adjust for header height */
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    padding: 10px;
+    resize: none;
+    font-family: monospace;
+    font-size: 13px;
+    outline: none;
+}
+
+.notepad-add-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px var(--shadow-color);
+    transition: transform 0.2s ease;
+}
+
+.notepad-add-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Ensure body::before background applies to notepad tab */
+body::before {
+    z-index: -1;
+}
+
+/* Rest of your existing CSS remains unchanged */

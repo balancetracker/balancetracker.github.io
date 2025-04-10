@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            overflow: auto;
+            min-height: 100vh;
+            position: relative;
+        }
+        .notepad-container {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            overflow: hidden;
+            resize: both;
+            min-width: 200px;
+            min-height: 150px;
+            max-width: 80vw;
+            max-height: 80vh;
+            z-index: 1000;
+        }
+        .notepad-header {
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            font-size: 14px;
+        }
+        .notepad-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 2px 5px;
+            transition: color 0.3s ease;
+        }
+        .notepad-header button:hover {
+            color: var(--highlight-color);
+        }
+        .notepad-toolbar {
+            background: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 5px;
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        .notepad-toolbar button, .notepad-toolbar select, .notepad-toolbar input {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 12px;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: background 0.3s ease;
+        }
+        .notepad-toolbar button:hover, .notepad-toolbar select:hover, .notepad-toolbar input:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        .notepad-content {
+            width: 100%;
+            height: calc(100% - 70px); /* Adjust for header, toolbar, and save indicator */
+            padding: 10px;
+            overflow-y: auto;
+            color: var(--text-color);
+            font-family: monospace;
+            font-size: 13px;
+            outline: none;
+            background: transparent;
+        }
+        .notepad-save-indicator {
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            font-size: 10px;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        .notepad-add-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px var(--shadow-color);
+            transition: transform 0.2s ease;
+        }
+        .notepad-add-btn:hover {
+            transform: scale(1.1);
+        }
+        body::before {
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="font-mono">
+    <div id="notepadList"></div>
+    <button id="addNoteBtn" class="notepad-add-btn">+</button>
+    <script>
+        const notepadList = document.getElementById('notepadList');
+        const addNoteBtn = document.getElementById('addNoteBtn');
+        let notes = JSON.parse(localStorage.getItem('notepadData')) || [];
+        let saveTimeout = null;
+
+        // Apply saved theme
+        const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+        document.body.className = `font-mono theme-${savedTheme}`;
+        document.documentElement.setAttribute('data-theme', 
+            ['default', 'family', 'fishing', 'luky', 'peace', 'missing', 'work', 'beach', 'party', 'sea', 'care', 'rainy', 'sunny', 'meteor', 
+             'strawhat', 'pirateship', 'logo', 'adventure', 'kid', 'joyboy', 'forest', 'grandline', 'onepiece', 
+             'home', 'angkor', 'dream', 'sleeping', 'relax', 'sticky', 'shower', 'cute', 'gang', 
+             'jgmix', 'goffy', 'chers', 'kdmv', 'kesomtus', 'trip', 'street', 'heart', 'sweet', 
+             'hikhik', 'woo', 'thnking', 'team', 'first', 'hug', 'nature', 'warm', 'ocean', 
+             'wating', 'hello', 'lolo', 'cool', 'help', 'rgcham', 'collapsing', 'whoops', 
+             'daisy', 'campfire', 'cozy', 'meet', 'safe', 'sakura', 'village'].includes(savedTheme) ? 'light' : 'dark'
+        );
+
+        // Render existing notes
+        function renderNotes() {
+            notepadList.innerHTML = '';
+            notes.forEach((note, index) => {
+                const noteEl = createNoteElement(note, index);
+                notepadList.appendChild(noteEl);
+            });
+        }
+
+        // Create a note element
+        function createNoteElement(note, index) {
+            const noteEl = document.createElement('div');
+            noteEl.className = 'notepad-container';
+            noteEl.style.left = note.left || '50px';
+            noteEl.style.top = note.top || `${50 + index * 20}px`;
+            noteEl.style.width = note.width || '300px';
+            noteEl.style.height = note.height || '400px';
+            noteEl.innerHTML = `
+                <div class="notepad-header">
+                    <span>Note ${index + 1}</span>
+                    <div>
+                        <button class="pin-btn" title="${note.pinned ? 'Unpin' : 'Pin'}"><i class="fas fa-${note.pinned ? 'lock' : 'unlock'}"></i></button>
+                        <button class="minimize-btn"><i class="fas fa-minus"></i></button>
+                        <button class="close-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="notepad-toolbar">
+                    <button class="format-btn" data-command="bold" title="Bold"><b>B</b></button>
+                    <button class="format-btn" data-command="italic" title="Italic"><i>I</i></button>
+                    <button class="format-btn" data-command="underline" title="Underline"><u>U</u></button>
+                    <button class="format-btn" data-command="strikeThrough" title="Strikethrough"><s>ab</s></button>
+                    <button class="format-btn" data-command="justifyLeft" title="Align Left"><i class="fas fa-align-left"></i></button>
+                    <button class="format-btn" data-command="justifyCenter" title="Align Center"><i class="fas fa-align-center"></i></button>
+                    <button class="format-btn" data-command="justifyRight" title="Align Right"><i class="fas fa-align-right"></i></button>
+                    <select class="font-size" title="Font Size">
+                        <option value="1">10px</option>
+                        <option value="2">12px</option>
+                        <option value="3" selected>14px</option>
+                        <option value="4">16px</option>
+                        <option value="5">18px</option>
+                    </select>
+                    <input type="color" class="color-picker" title="Text Color" value="#000000">
+                    <button class="format-btn" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+                    <button class="format-btn" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                </div>
+                <div class="notepad-content" contenteditable="true">${note.content || ''}</div>
+                <div class="notepad-save-indicator">Saved</div>
+            `;
+
+            // Dragging
+            const header = noteEl.querySelector('.notepad-header');
+            let isDragging = false, startX, startY;
+            header.addEventListener('mousedown', (e) => {
+                if (note.pinned) return;
+                isDragging = true;
+                startX = e.clientX - parseInt(noteEl.style.left);
+                startY = e.clientY - parseInt(noteEl.style.top);
+            });
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    noteEl.style.left = `${e.clientX - startX}px`;
+                    noteEl.style.top = `${e.clientY - startY}px`;
+                }
+            });
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    notes[index].left = noteEl.style.left;
+                    notes[index].top = noteEl.style.top;
+                    saveNotes();
+                }
+            });
+
+            // Content editing
+            const content = noteEl.querySelector('.notepad-content');
+            const saveIndicator = noteEl.querySelector('.notepad-save-indicator');
+
+            // Paste plain text only
+            content.addEventListener('paste', (e) => {
+                e.preventDefault();
+                const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+                document.execCommand('insertText', false, text);
+            });
+
+            // Auto-save with indicator
+            content.addEventListener('input', () => {
+                notes[index].content = content.innerHTML;
+                saveIndicator.textContent = 'Saving...';
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(() => {
+                    saveNotes();
+                    saveIndicator.textContent = 'Saved';
+                }, 500); // Debounce save by 500ms
+            });
+
+            // Keyboard shortcuts
+            content.addEventListener('keydown', (e) => {
+                if (e.ctrlKey) {
+                    if (e.key === 'b') {
+                        e.preventDefault();
+                        document.execCommand('bold', false, null);
+                    } else if (e.key === 'i') {
+                        e.preventDefault();
+                        document.execCommand('italic', false, null);
+                    } else if (e.key === 'u') {
+                        e.preventDefault();
+                        document.execCommand('underline', false, null);
+                    }
+                }
+            });
+
+            // Formatting buttons
+            const formatButtons = noteEl.querySelectorAll('.format-btn');
+            formatButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.execCommand(btn.dataset.command, false, null);
+                    content.focus();
+                });
+            });
+
+            // Font size
+            const fontSizeSelect = noteEl.querySelector('.font-size');
+            fontSizeSelect.addEventListener('change', () => {
+                document.execCommand('fontSize', false, fontSizeSelect.value);
+                content.focus();
+            });
+
+            // Color picker
+            const colorPicker = noteEl.querySelector('.color-picker');
+            colorPicker.addEventListener('input', () => {
+                document.execCommand('foreColor', false, colorPicker.value);
+                content.focus();
+            });
+
+            // Pin
+            const pinBtn = noteEl.querySelector('.pin-btn');
+            pinBtn.addEventListener('click', () => {
+                notes[index].pinned = !notes[index].pinned;
+                pinBtn.innerHTML = `<i class="fas fa-${notes[index].pinned ? 'lock' : 'unlock'}"></i>`;
+                pinBtn.title = notes[index].pinned ? 'Unpin' : 'Pin';
+                saveNotes();
+            });
+
+            // Minimize/Maximize
+            const minimizeBtn = noteEl.querySelector('.minimize-btn');
+            minimizeBtn.addEventListener('click', () => {
+                if (noteEl.style.height === '30px') {
+                    noteEl.style.height = notes[index].height || '400px';
+                    minimizeBtn.innerHTML = '<i class="fas fa-minus"></i>';
+                } else {
+                    notes[index].height = noteEl.style.height;
+                    noteEl.style.height = '30px';
+                    minimizeBtn.innerHTML = '<i class="fas fa-plus"></i>';
+                }
+                saveNotes();
+            });
+
+            // Close
+            const closeBtn = noteEl.querySelector('.close-btn');
+            closeBtn.addEventListener('click', () => {
+                notes.splice(index, 1);
+                saveNotes();
+                noteEl.remove();
+            });
+
+            // Resize observer
+            noteEl.addEventListener('resize', () => {
+                notes[index].width = noteEl.style.width;
+                notes[index].height = noteEl.style.height;
+                saveNotes();
+            });
+
+            return noteEl;
+        }
+
+        // Add new note
+        addNoteBtn.addEventListener('click', () => {
+            const newNote = { content: '', left: '50px', top: `${50 + notes.length * 20}px`, width: '300px', height: '400px', pinned: false };
+            notes.push(newNote);
+            saveNotes();
+            const noteEl = createNoteElement(newNote, notes.length - 1);
+            notepadList.appendChild(noteEl);
+        });
+
+        // Save notes to localStorage
+        function saveNotes() {
+            localStorage.setItem('notepadData', JSON.stringify(notes));
+        }
+
+        // Theme sync across tabs
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'selectedTheme') {
+                const newTheme = event.newValue || 'default';
+                document.body.className = `font-mono theme-${newTheme}`;
+                document.documentElement.setAttribute('data-theme', 
+                    ['default', 'family', 'fishing', 'luky', 'peace', 'missing', 'work', 'beach', 'party', 'sea', 'care', 'rainy', 'sunny', 'meteor', 
+                     'strawhat', 'pirateship', 'logo', 'adventure', 'kid', 'joyboy', 'forest', 'grandline', 'onepiece', 
+                     'home', 'angkor', 'dream', 'sleeping', 'relax', 'sticky', 'shower', 'cute', 'gang', 
+                     'jgmix', 'goffy', 'chers', 'kdmv', 'kesomtus', 'trip', 'street', 'heart', 'sweet', 
+                     'hikhik', 'woo', 'thnking', 'team', 'first', 'hug', 'nature', 'warm', 'ocean', 
+                     'wating', 'hello', 'lolo', 'cool', 'help', 'rgcham', 'collapsing', 'whoops', 
+                     'daisy', 'campfire', 'cozy', 'meet', 'safe', 'sakura', 'village'].includes(newTheme) ? 'light' : 'dark'
+                );
+            }
+        });
+
+        // Initial render
+        renderNotes();
+    </script>
+</body>
+</html>
